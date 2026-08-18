@@ -432,7 +432,7 @@ if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   
   // Direct unmatched GET routes (non-API) to Vite's index.html
-  app.get("*", (req: Request, res: Response, next) => {
+  app.get("(.*)", (req: Request, res: Response, next) => {
     if (req.path.startsWith("/api")) {
       return next();
     }
