@@ -1,0 +1,2750 @@
+[
+  {
+    "id": "M-100",
+    "model": "M-100",
+    "name": "Heavy Duty Induction Motor",
+    "category": "Motors",
+    "description": "Standard three-phase asynchronous motor designed for general manufacturing machinery, conveying systems, and factory applications. Durable cast iron construction ensures long operational life.",
+    "image": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "5.5 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1440 RPM",
+      "Current": "10.5 A",
+      "Efficiency": "89.5%",
+      "Power Factor": "0.83",
+      "IP Rating": "IP55",
+      "Insulation Class": "Class F",
+      "Frame Size": "132S",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "45 kg",
+      "Operating Temp": "-20°C to +40°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+    },
+    "applications": [
+      "Conveyor Systems",
+      "Fans & Blowers",
+      "Centrifugal Pumps",
+      "General Machinery"
+    ],
+    "compatibleProducts": [
+      "C-100",
+      "C-102",
+      "GB-100",
+      "GB-104"
+    ],
+    "relatedProducts": [
+      "M-101",
+      "M-105",
+      "M-108"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-100-DS",
+        "productId": "M-100",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-100-datasheet.pdf",
+        "title": "Heavy Duty Induction Motor M-100 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-100-IM",
+        "productId": "M-100",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-100-installation-manual.pdf",
+        "title": "Heavy Duty Induction Motor M-100 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-100-PB",
+        "productId": "M-100",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-100-brochure.pdf",
+        "title": "Heavy Duty Induction Motor M-100 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-101",
+    "model": "M-101",
+    "name": "Premium High Efficiency Motor",
+    "category": "Motors",
+    "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+    "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "7.5 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1460 RPM",
+      "Current": "14.2 A",
+      "Efficiency": "91.0%",
+      "Power Factor": "0.86",
+      "IP Rating": "IP55",
+      "Insulation Class": "Class F",
+      "Frame Size": "132M",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "45 kg",
+      "Operating Temp": "-20°C to +40°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+    },
+    "applications": [
+      "Industrial Pumps",
+      "Air Compressors",
+      "HVAC Blowers",
+      "Manufacturing Equipment"
+    ],
+    "compatibleProducts": [
+      "C-100",
+      "C-105",
+      "GB-101",
+      "GB-102",
+      "P-100",
+      "P-103"
+    ],
+    "relatedProducts": [
+      "M-100",
+      "M-102",
+      "M-103",
+      "M-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-101-DS",
+        "productId": "M-101",
+        "type": "Technical Datasheet",
+        "version": "v2.0",
+        "file": "/documents/M-101-datasheet.pdf",
+        "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "18 Aug 2026"
+      },
+      {
+        "id": "DOC-M-101-IM",
+        "productId": "M-101",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-101-installation-manual.pdf",
+        "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-101-PB",
+        "productId": "M-101",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-101-brochure.pdf",
+        "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 10,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-102",
+    "model": "M-102",
+    "name": "Compact High-Speed Motor",
+    "category": "Motors",
+    "description": "High-speed 2-pole industrial motor designed for applications requiring high rotational velocity, such as blowers, turbochargers, and high-speed cutting tools.",
+    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "11 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "2900 RPM",
+      "Current": "20.1 A",
+      "Efficiency": "91.8%",
+      "Power Factor": "0.88",
+      "IP Rating": "IP55",
+      "Insulation Class": "Class F",
+      "Frame Size": "160M",
+      "Mounting": "Flange Mount (B5)",
+      "Weight": "78 kg",
+      "Operating Temp": "-15°C to +45°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC"
+    },
+    "applications": [
+      "Turbine Blowers",
+      "High-Speed Shapers",
+      "Multistage Pumps",
+      "Compressors"
+    ],
+    "compatibleProducts": [
+      "C-101",
+      "C-104",
+      "P-102",
+      "COMP-102"
+    ],
+    "relatedProducts": [
+      "M-101",
+      "M-106",
+      "M-107"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-102-DS",
+        "productId": "M-102",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-102-datasheet.pdf",
+        "title": "Compact High-Speed Motor M-102 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-102-IM",
+        "productId": "M-102",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-102-installation-manual.pdf",
+        "title": "Compact High-Speed Motor M-102 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-102-PB",
+        "productId": "M-102",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-102-brochure.pdf",
+        "title": "Compact High-Speed Motor M-102 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-103",
+    "model": "M-103",
+    "name": "Low-Speed High-Torque Motor",
+    "category": "Motors",
+    "description": "Slow-running 6-pole motor tailored specifically for driving heavy machinery where high starting torque is required at lower rotational speeds.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "15 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "960 RPM",
+      "Current": "29.5 A",
+      "Efficiency": "90.2%",
+      "Power Factor": "0.82",
+      "IP Rating": "IP55",
+      "Insulation Class": "Class F",
+      "Frame Size": "180L",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "145 kg",
+      "Operating Temp": "-20°C to +40°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC"
+    },
+    "applications": [
+      "Heavy Agitators",
+      "Crusher Feeders",
+      "Grinding Mills",
+      "Slow Conveyors"
+    ],
+    "compatibleProducts": [
+      "C-101",
+      "C-104",
+      "GB-103"
+    ],
+    "relatedProducts": [
+      "M-101",
+      "M-106",
+      "M-109"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-103-DS",
+        "productId": "M-103",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-103-datasheet.pdf",
+        "title": "Low-Speed High-Torque Motor M-103 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-103-IM",
+        "productId": "M-103",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-103-installation-manual.pdf",
+        "title": "Low-Speed High-Torque Motor M-103 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-103-PB",
+        "productId": "M-103",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-103-brochure.pdf",
+        "title": "Low-Speed High-Torque Motor M-103 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-104",
+    "model": "M-104",
+    "name": "Explosion-Proof Motor",
+    "category": "Motors",
+    "description": "Certified flameproof and explosion-proof motor for installation in hazardous industrial atmospheres where flammable gases, vapors, or dust may be present. Certified ATEX zone 1 & 2.",
+    "image": "https://images.unsplash.com/photo-1590986424791-2355385d0442?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "7.5 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1440 RPM",
+      "Current": "14.5 A",
+      "Efficiency": "90.5%",
+      "Power Factor": "0.85",
+      "IP Rating": "IP65",
+      "Insulation Class": "Class H",
+      "Frame Size": "132M",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "65 kg",
+      "Operating Temp": "-20°C to +60°C",
+      "Housing Material": "Reinforced Cast Iron",
+      "Cooling": "TEFC - Flameproof Ex d"
+    },
+    "applications": [
+      "Chemical Plants",
+      "Oil & Gas Refineries",
+      "Paint Spray Booths",
+      "Coal Mining Systems"
+    ],
+    "compatibleProducts": [
+      "C-105",
+      "GB-101",
+      "P-103",
+      "V-101"
+    ],
+    "relatedProducts": [
+      "M-101",
+      "M-107",
+      "M-109"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-104-DS",
+        "productId": "M-104",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-104-datasheet.pdf",
+        "title": "Explosion-Proof Motor M-104 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-104-IM",
+        "productId": "M-104",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-104-installation-manual.pdf",
+        "title": "Explosion-Proof Motor M-104 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-104-PB",
+        "productId": "M-104",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-104-brochure.pdf",
+        "title": "Explosion-Proof Motor M-104 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-105",
+    "model": "M-105",
+    "name": "Single Phase Utility Motor",
+    "category": "Motors",
+    "description": "High-starting torque capacitor-run single-phase motor suitable for workshop and light industrial machinery where three-phase power supply is unavailable.",
+    "image": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "2.2 kW",
+      "Voltage": "230 V",
+      "Frequency": "50 Hz",
+      "Speed": "1440 RPM",
+      "Current": "12.8 A",
+      "Efficiency": "83.0%",
+      "Power Factor": "0.95",
+      "IP Rating": "IP44",
+      "Insulation Class": "Class B",
+      "Frame Size": "100L",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "24 kg",
+      "Operating Temp": "-10°C to +40°C",
+      "Housing Material": "Aluminum",
+      "Cooling": "TEFC"
+    },
+    "applications": [
+      "Small Lathes",
+      "Drill Presses",
+      "Light Duty Pumps",
+      "Agricultural Augers"
+    ],
+    "compatibleProducts": [
+      "C-102",
+      "GB-104",
+      "P-105"
+    ],
+    "relatedProducts": [
+      "M-100",
+      "M-108"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-105-DS",
+        "productId": "M-105",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-105-datasheet.pdf",
+        "title": "Single Phase Utility Motor M-105 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-105-IM",
+        "productId": "M-105",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-105-installation-manual.pdf",
+        "title": "Single Phase Utility Motor M-105 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-105-PB",
+        "productId": "M-105",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-105-brochure.pdf",
+        "title": "Single Phase Utility Motor M-105 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-106",
+    "model": "M-106",
+    "name": "High Power Industrial Motor",
+    "category": "Motors",
+    "description": "Heavy-duty three-phase motor designed to handle extreme industrial loads in steel mills, cement plants, and mining conveyors. Highly rigid casting ensures low vibration.",
+    "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "18.5 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1440 RPM",
+      "Current": "33.2 A",
+      "Efficiency": "92.4%",
+      "Power Factor": "0.87",
+      "IP Rating": "IP55",
+      "Insulation Class": "Class F",
+      "Frame Size": "180M",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "162 kg",
+      "Operating Temp": "-20°C to +40°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC"
+    },
+    "applications": [
+      "Heavy Mining Crushers",
+      "High-Volume Air Blowers",
+      "Large Water Pumps",
+      "Extruders"
+    ],
+    "compatibleProducts": [
+      "C-101",
+      "C-104",
+      "GB-103",
+      "P-106"
+    ],
+    "relatedProducts": [
+      "M-103",
+      "M-107",
+      "M-109"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-106-DS",
+        "productId": "M-106",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-106-datasheet.pdf",
+        "title": "High Power Industrial Motor M-106 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-106-IM",
+        "productId": "M-106",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-106-installation-manual.pdf",
+        "title": "High Power Industrial Motor M-106 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-106-PB",
+        "productId": "M-106",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-106-brochure.pdf",
+        "title": "High Power Industrial Motor M-106 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-107",
+    "model": "M-107",
+    "name": "Marine Grade Induction Motor",
+    "category": "Motors",
+    "description": "Corrosion-resistant induction motor designed for shipboard and maritime operations. Special epoxy paint and stainless hardware resist salt air spray and humidity.",
+    "image": "https://images.unsplash.com/photo-1590986424791-2355385d0442?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "11 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1440 RPM",
+      "Current": "20.2 A",
+      "Efficiency": "91.2%",
+      "Power Factor": "0.85",
+      "IP Rating": "IP65",
+      "Insulation Class": "Class F",
+      "Frame Size": "160S",
+      "Mounting": "Foot/Flange (B35)",
+      "Weight": "89 kg",
+      "Operating Temp": "-20°C to +50°C",
+      "Housing Material": "Epoxy Coated Cast Iron",
+      "Cooling": "TEFC Marine Grade"
+    },
+    "applications": [
+      "Ship Winches",
+      "Bilge Pumps",
+      "Marine Fans",
+      "Deck Machinery"
+    ],
+    "compatibleProducts": [
+      "C-105",
+      "GB-101",
+      "P-107"
+    ],
+    "relatedProducts": [
+      "M-102",
+      "M-104",
+      "M-106"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-107-DS",
+        "productId": "M-107",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-107-datasheet.pdf",
+        "title": "Marine Grade Induction Motor M-107 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-107-IM",
+        "productId": "M-107",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-107-installation-manual.pdf",
+        "title": "Marine Grade Induction Motor M-107 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-107-PB",
+        "productId": "M-107",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-107-brochure.pdf",
+        "title": "Marine Grade Induction Motor M-107 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-108",
+    "model": "M-108",
+    "name": "Dual-Speed Pole-Changing Motor",
+    "category": "Motors",
+    "description": "Pole-changing Dahlander motor providing two distinct pre-set operational speeds (1440 RPM and 2900 RPM) to allow flexible process adjustment without a VFD.",
+    "image": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "5.5 kW / 7.5 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1440 / 2900 RPM",
+      "Current": "11.2 / 14.8 A",
+      "Efficiency": "88.0% / 89.5%",
+      "Power Factor": "0.84 / 0.88",
+      "IP Rating": "IP55",
+      "Insulation Class": "Class F",
+      "Frame Size": "132S",
+      "Mounting": "Foot Mount (B3)",
+      "Weight": "55 kg",
+      "Operating Temp": "-15°C to +40°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC"
+    },
+    "applications": [
+      "Mixers & Agitators",
+      "Bandsaws",
+      "Industrial HVAC",
+      "Dual-Speed Elevators"
+    ],
+    "compatibleProducts": [
+      "GB-100",
+      "GB-101",
+      "GB-104"
+    ],
+    "relatedProducts": [
+      "M-100",
+      "M-101",
+      "M-105"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-108-DS",
+        "productId": "M-108",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-108-datasheet.pdf",
+        "title": "Dual-Speed Pole-Changing Motor M-108 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-108-IM",
+        "productId": "M-108",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-108-installation-manual.pdf",
+        "title": "Dual-Speed Pole-Changing Motor M-108 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-108-PB",
+        "productId": "M-108",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-108-brochure.pdf",
+        "title": "Dual-Speed Pole-Changing Motor M-108 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "M-109",
+    "model": "M-109",
+    "name": "Ultra-Premium IE4 Super-Efficiency Motor",
+    "category": "Motors",
+    "description": "State-of-the-art permanent magnet synchronous motor delivering IE4 super-efficiency. Saves up to 25% energy when paired with variable speed drives in duty-heavy environments.",
+    "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "15 kW",
+      "Voltage": "415 V",
+      "Frequency": "50 Hz",
+      "Speed": "1500 RPM",
+      "Current": "26.5 A",
+      "Efficiency": "94.8%",
+      "Power Factor": "0.93",
+      "IP Rating": "IP65",
+      "Insulation Class": "Class H",
+      "Frame Size": "160L",
+      "Mounting": "Foot/Flange (B35)",
+      "Weight": "110 kg",
+      "Operating Temp": "-20°C to +55°C",
+      "Housing Material": "Cast Iron",
+      "Cooling": "TEFC - Synchronous PM"
+    },
+    "applications": [
+      "High-Duty Conveyors",
+      "Pumping Stations",
+      "Compressor Stations",
+      "Chemical Extruders"
+    ],
+    "compatibleProducts": [
+      "C-101",
+      "C-105",
+      "GB-103",
+      "P-106",
+      "COMP-101"
+    ],
+    "relatedProducts": [
+      "M-101",
+      "M-103",
+      "M-106",
+      "M-107"
+    ],
+    "documents": [
+      {
+        "id": "DOC-M-109-DS",
+        "productId": "M-109",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/M-109-datasheet.pdf",
+        "title": "Ultra-Premium IE4 Super-Efficiency Motor M-109 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-M-109-IM",
+        "productId": "M-109",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/M-109-installation-manual.pdf",
+        "title": "Ultra-Premium IE4 Super-Efficiency Motor M-109 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-M-109-PB",
+        "productId": "M-109",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/M-109-brochure.pdf",
+        "title": "Ultra-Premium IE4 Super-Efficiency Motor M-109 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-100",
+    "model": "P-100",
+    "name": "Centrifugal Water Pump",
+    "category": "Pumps",
+    "description": "Industrial centrifugal pump for boosting water supply and fluid transport in HVAC and factory systems. Made of robust Grade 304 Stainless Steel for excellent service life.",
+    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "100 L/min",
+      "Maximum Pressure": "10 bar",
+      "Head": "32 m",
+      "Power": "5 kW",
+      "Voltage": "415 V",
+      "Speed": "1450 RPM",
+      "Material": "Stainless Steel 304",
+      "Inlet Size": "1.5 Inch",
+      "Outlet Size": "1.0 Inch",
+      "Operating Temp": "-10°C to +90°C",
+      "Weight": "28 kg",
+      "IP Rating": "IP55",
+      "FlowRate": "120 L/min",
+      "Pressure": "8 bar",
+      "Temperature": "80 C"
+    },
+    "applications": [
+      "HVAC Chilled Water",
+      "Industrial Process Water",
+      "Irrigation Systems",
+      "Pressure Boosting"
+    ],
+    "compatibleProducts": [
+      "M-100",
+      "M-101",
+      "C-100",
+      "V-100",
+      "V-104"
+    ],
+    "relatedProducts": [
+      "P-101",
+      "P-103",
+      "P-105"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-100-DS",
+        "productId": "P-100",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-100-datasheet.pdf",
+        "title": "Centrifugal Water Pump P-100 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-100-IM",
+        "productId": "P-100",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-100-installation-manual.pdf",
+        "title": "Centrifugal Water Pump P-100 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-100-PB",
+        "productId": "P-100",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-100-brochure.pdf",
+        "title": "Centrifugal Water Pump P-100 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 2,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-101",
+    "model": "P-101",
+    "name": "High-Flow Centrifugal Pump",
+    "category": "Pumps",
+    "description": "Heavy-duty horizontal end-suction centrifugal pump built for high volume water transfer in utility and infrastructure tasks. Highly optimized impeller structure reduces cavitation risk.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "250 L/min",
+      "Maximum Pressure": "6 bar",
+      "Head": "24 m",
+      "Power": "7.5 kW",
+      "Voltage": "415 V",
+      "Speed": "1450 RPM",
+      "Material": "Stainless Steel 304",
+      "Inlet Size": "2.0 Inch",
+      "Outlet Size": "1.5 Inch",
+      "Operating Temp": "-10°C to +90°C",
+      "Weight": "36 kg",
+      "IP Rating": "IP55"
+    },
+    "applications": [
+      "Industrial Cooling Towers",
+      "Water Treatment Intake",
+      "Bulk Fluid Distribution",
+      "Dewatering"
+    ],
+    "compatibleProducts": [
+      "M-101",
+      "M-104",
+      "C-100",
+      "V-100",
+      "V-102"
+    ],
+    "relatedProducts": [
+      "P-100",
+      "P-104",
+      "P-106"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-101-DS",
+        "productId": "P-101",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-101-datasheet.pdf",
+        "title": "High-Flow Centrifugal Pump P-101 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-101-IM",
+        "productId": "P-101",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-101-installation-manual.pdf",
+        "title": "High-Flow Centrifugal Pump P-101 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-101-PB",
+        "productId": "P-101",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-101-brochure.pdf",
+        "title": "High-Flow Centrifugal Pump P-101 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-102",
+    "model": "P-102",
+    "name": "High-Pressure Multistage Pump",
+    "category": "Pumps",
+    "description": "Vertical multistage centrifugal pump engineered to deliver high outlet pressures for boiler feed and reverse osmosis water purification systems.",
+    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "80 L/min",
+      "Maximum Pressure": "25 bar",
+      "Head": "120 m",
+      "Power": "11 kW",
+      "Voltage": "415 V",
+      "Speed": "2900 RPM",
+      "Material": "Cast Iron / SS304",
+      "Inlet Size": "1.5 Inch",
+      "Outlet Size": "1.5 Inch",
+      "Operating Temp": "-15°C to +120°C",
+      "Weight": "65 kg",
+      "IP Rating": "IP55"
+    },
+    "applications": [
+      "Boiler Feedwater Systems",
+      "Reverse Osmosis",
+      "High-Pressure Washdowns",
+      "Firefighting Mains"
+    ],
+    "compatibleProducts": [
+      "M-102",
+      "M-107",
+      "C-101",
+      "C-104",
+      "V-101"
+    ],
+    "relatedProducts": [
+      "P-100",
+      "P-106"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-102-DS",
+        "productId": "P-102",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-102-datasheet.pdf",
+        "title": "High-Pressure Multistage Pump P-102 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-102-IM",
+        "productId": "P-102",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-102-installation-manual.pdf",
+        "title": "High-Pressure Multistage Pump P-102 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-102-PB",
+        "productId": "P-102",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-102-brochure.pdf",
+        "title": "High-Pressure Multistage Pump P-102 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-103",
+    "model": "P-103",
+    "name": "Chemical Process Transfer Pump",
+    "category": "Pumps",
+    "description": "Corrosion-resistant chemical transfer pump cast in Grade 316 Stainless Steel. Features chemical-grade double mechanical shaft seals to prevent dangerous fluid leaks.",
+    "image": "https://images.unsplash.com/photo-1590986424791-2355385d0442?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "120 L/min",
+      "Maximum Pressure": "8 bar",
+      "Head": "28 m",
+      "Power": "4 kW",
+      "Voltage": "415 V",
+      "Speed": "1450 RPM",
+      "Material": "Stainless Steel 316",
+      "Inlet Size": "1.5 Inch",
+      "Outlet Size": "1.25 Inch",
+      "Operating Temp": "-20°C to +120°C",
+      "Weight": "32 kg",
+      "IP Rating": "IP55"
+    },
+    "applications": [
+      "Acid & Alkali Transfer",
+      "Chemical Refining",
+      "Wastewater Neutralization",
+      "Electroplating Line"
+    ],
+    "compatibleProducts": [
+      "M-101",
+      "M-104",
+      "C-100",
+      "C-105",
+      "V-100",
+      "V-103"
+    ],
+    "relatedProducts": [
+      "P-100",
+      "P-101",
+      "P-107"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-103-DS",
+        "productId": "P-103",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-103-datasheet.pdf",
+        "title": "Chemical Process Transfer Pump P-103 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-103-IM",
+        "productId": "P-103",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-103-installation-manual.pdf",
+        "title": "Chemical Process Transfer Pump P-103 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-103-PB",
+        "productId": "P-103",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-103-brochure.pdf",
+        "title": "Chemical Process Transfer Pump P-103 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-104",
+    "model": "P-104",
+    "name": "Heavy-Duty Solids Handling Pump",
+    "category": "Pumps",
+    "description": "Vortex-impeller centrifugal pump designed to pump slurries, sewage, and effluent carrying suspended solids. Robust wear-resistant cast iron pump casing.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "500 L/min",
+      "Maximum Pressure": "4 bar",
+      "Head": "16 m",
+      "Power": "7.5 kW",
+      "Voltage": "415 V",
+      "Speed": "1450 RPM",
+      "Material": "Hardened Cast Iron",
+      "Inlet Size": "3.0 Inch",
+      "Outlet Size": "3.0 Inch",
+      "Operating Temp": "0°C to +60°C",
+      "Weight": "72 kg",
+      "IP Rating": "IP55"
+    },
+    "applications": [
+      "Sewage Treatment Plants",
+      "Agricultural Slurry",
+      "Industrial Waste Drainage",
+      "Food Pulp Processing"
+    ],
+    "compatibleProducts": [
+      "M-101",
+      "M-103",
+      "C-101",
+      "V-102"
+    ],
+    "relatedProducts": [
+      "P-101",
+      "P-106",
+      "P-107"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-104-DS",
+        "productId": "P-104",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-104-datasheet.pdf",
+        "title": "Heavy-Duty Solids Handling Pump P-104 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-104-IM",
+        "productId": "P-104",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-104-installation-manual.pdf",
+        "title": "Heavy-Duty Solids Handling Pump P-104 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-104-PB",
+        "productId": "P-104",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-104-brochure.pdf",
+        "title": "Heavy-Duty Solids Handling Pump P-104 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-105",
+    "model": "P-105",
+    "name": "Bronze Inline Circulation Pump",
+    "category": "Pumps",
+    "description": "In-line canned rotor pump with marine bronze casing. Quiet running and maintenance-free. Ideal for hot water loops and secondary HVAC distribution.",
+    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "150 L/min",
+      "Maximum Pressure": "5 bar",
+      "Head": "12 m",
+      "Power": "2.2 kW",
+      "Voltage": "230 V",
+      "Speed": "1440 RPM",
+      "Material": "Marine Bronze",
+      "Inlet Size": "2.0 Inch",
+      "Outlet Size": "2.0 Inch",
+      "Operating Temp": "-10°C to +110°C",
+      "Weight": "19 kg",
+      "IP Rating": "IP44"
+    },
+    "applications": [
+      "Hot Water Loop Circulation",
+      "Secondary HVAC Pumps",
+      "Seawater Intake",
+      "Domestic Boosting"
+    ],
+    "compatibleProducts": [
+      "M-105",
+      "C-102",
+      "V-103"
+    ],
+    "relatedProducts": [
+      "P-100",
+      "P-103"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-105-DS",
+        "productId": "P-105",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-105-datasheet.pdf",
+        "title": "Bronze Inline Circulation Pump P-105 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-105-IM",
+        "productId": "P-105",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-105-installation-manual.pdf",
+        "title": "Bronze Inline Circulation Pump P-105 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-105-PB",
+        "productId": "P-105",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-105-brochure.pdf",
+        "title": "Bronze Inline Circulation Pump P-105 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-106",
+    "model": "P-106",
+    "name": "High-Volume Industrial Water Pump",
+    "category": "Pumps",
+    "description": "Double-volute axial split pump for municipal water works and massive process cooling operations. Exceptionally high efficiency and easy split-case inspection.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "800 L/min",
+      "Maximum Pressure": "8 bar",
+      "Head": "45 m",
+      "Power": "15 kW",
+      "Voltage": "415 V",
+      "Speed": "1450 RPM",
+      "Material": "Cast Iron / SS316",
+      "Inlet Size": "4.0 Inch",
+      "Outlet Size": "3.0 Inch",
+      "Operating Temp": "-10°C to +80°C",
+      "Weight": "115 kg",
+      "IP Rating": "IP55"
+    },
+    "applications": [
+      "Municipal Water Treatment",
+      "Mine Dewatering",
+      "Industrial Cooling Plants",
+      "Flood Irrigation"
+    ],
+    "compatibleProducts": [
+      "M-106",
+      "M-109",
+      "C-101",
+      "V-102",
+      "V-101"
+    ],
+    "relatedProducts": [
+      "P-101",
+      "P-102",
+      "P-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-106-DS",
+        "productId": "P-106",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-106-datasheet.pdf",
+        "title": "High-Volume Industrial Water Pump P-106 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-106-IM",
+        "productId": "P-106",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-106-installation-manual.pdf",
+        "title": "High-Volume Industrial Water Pump P-106 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-106-PB",
+        "productId": "P-106",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-106-brochure.pdf",
+        "title": "High-Volume Industrial Water Pump P-106 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "P-107",
+    "model": "P-107",
+    "name": "Submersible Drainage Pump",
+    "category": "Pumps",
+    "description": "Heavy duty submersible pump designed for pit drainage, basement bilge pumping, and emergency water extraction. Double mechanical seal running in oil bath.",
+    "image": "https://images.unsplash.com/photo-1590986424791-2355385d0442?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Flow Rate": "300 L/min",
+      "Maximum Pressure": "3 bar",
+      "Head": "15 m",
+      "Power": "3 kW",
+      "Voltage": "415 V",
+      "Speed": "2900 RPM",
+      "Material": "Stainless Steel 316",
+      "Inlet Size": "2.5 Inch",
+      "Outlet Size": "2.5 Inch",
+      "Operating Temp": "0°C to +40°C (Submerged)",
+      "Weight": "24 kg",
+      "IP Rating": "IP68"
+    },
+    "applications": [
+      "Pit Dewatering",
+      "Stormwater Basins",
+      "Construction Site Drainage",
+      "Shipboard Bilge"
+    ],
+    "compatibleProducts": [
+      "M-107",
+      "C-105",
+      "V-104"
+    ],
+    "relatedProducts": [
+      "P-104",
+      "P-105"
+    ],
+    "documents": [
+      {
+        "id": "DOC-P-107-DS",
+        "productId": "P-107",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/P-107-datasheet.pdf",
+        "title": "Submersible Drainage Pump P-107 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-P-107-IM",
+        "productId": "P-107",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/P-107-installation-manual.pdf",
+        "title": "Submersible Drainage Pump P-107 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-P-107-PB",
+        "productId": "P-107",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/P-107-brochure.pdf",
+        "title": "Submersible Drainage Pump P-107 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "C-100",
+    "model": "C-100",
+    "name": "Variable Frequency Drive V100",
+    "category": "Controllers",
+    "description": "Standard industrial VFD for open-loop motor control. Promotes high torque at low frequencies, programmable I/O terminals, and Modbus RTU communications. Highly responsive overload protection.",
+    "image": "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Input Voltage": "380-415 V AC",
+      "Output Voltage": "0-415 V AC",
+      "Current": "17 A",
+      "Power Rating": "7.5 kW",
+      "Frequency": "50/60 Hz",
+      "Protection Rating": "IP20",
+      "Communication Protocol": "Modbus RTU",
+      "Operating Temp": "-10°C to +50°C",
+      "Mounting Type": "Panel Mount / DIN Rail",
+      "Cooling": "Forced Air Cooling"
+    },
+    "applications": [
+      "Conveyor Speed Control",
+      "Centrifugal Fan Speed",
+      "Pressure Regulation Pumps",
+      "Packaging Plants"
+    ],
+    "compatibleProducts": [
+      "M-100",
+      "M-101",
+      "M-108",
+      "P-100",
+      "P-101",
+      "P-103"
+    ],
+    "relatedProducts": [
+      "C-101",
+      "C-102",
+      "C-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-C-100-DS",
+        "productId": "C-100",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/C-100-datasheet.pdf",
+        "title": "Variable Frequency Drive V100 C-100 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-C-100-IM",
+        "productId": "C-100",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/C-100-installation-manual.pdf",
+        "title": "Variable Frequency Drive V100 C-100 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-C-100-PB",
+        "productId": "C-100",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/C-100-brochure.pdf",
+        "title": "Variable Frequency Drive V100 C-100 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "C-101",
+    "model": "C-101",
+    "name": "Heavy-Duty VFD V101",
+    "category": "Controllers",
+    "description": "Advanced heavy-duty VFD with vector control loop and Ethernet Profinet communication protocol. Built-in braking unit and integrated EMC filter for factory environments.",
+    "image": "https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Input Voltage": "380-415 V AC",
+      "Output Voltage": "0-415 V AC",
+      "Current": "38 A",
+      "Power Rating": "18.5 kW",
+      "Frequency": "50/60 Hz",
+      "Protection Rating": "IP54",
+      "Communication Protocol": "Profinet / Modbus TCP",
+      "Operating Temp": "-10°C to +50°C",
+      "Mounting Type": "Wall Mount",
+      "Cooling": "Dual Internal Fans"
+    },
+    "applications": [
+      "Heavy Mining Crushers",
+      "High Power Exhaust Blowers",
+      "Municipal Water Pumps",
+      "Extruders & Mixers"
+    ],
+    "compatibleProducts": [
+      "M-102",
+      "M-103",
+      "M-106",
+      "M-109",
+      "P-102",
+      "P-106",
+      "COMP-101",
+      "COMP-103"
+    ],
+    "relatedProducts": [
+      "C-100",
+      "C-103",
+      "C-105"
+    ],
+    "documents": [
+      {
+        "id": "DOC-C-101-DS",
+        "productId": "C-101",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/C-101-datasheet.pdf",
+        "title": "Heavy-Duty VFD V101 C-101 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-C-101-IM",
+        "productId": "C-101",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/C-101-installation-manual.pdf",
+        "title": "Heavy-Duty VFD V101 C-101 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-C-101-PB",
+        "productId": "C-101",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/C-101-brochure.pdf",
+        "title": "Heavy-Duty VFD V101 C-101 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "C-102",
+    "model": "C-102",
+    "name": "Compact Micro VFD",
+    "category": "Controllers",
+    "description": "Space-saving single-phase input VFD designed for wall mount and DIN-rail layouts in small automation panels. Features standard speed potentiometer knob.",
+    "image": "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Input Voltage": "200-240 V AC (1-Phase)",
+      "Output Voltage": "0-240 V AC (3-Phase)",
+      "Current": "9.6 A",
+      "Power Rating": "2.2 kW",
+      "Frequency": "50/60 Hz",
+      "Protection Rating": "IP20",
+      "Communication Protocol": "Modbus RTU",
+      "Operating Temp": "-10°C to +40°C",
+      "Mounting Type": "DIN Rail",
+      "Cooling": "Natural Convection / Fan"
+    },
+    "applications": [
+      "Small Machine Tools",
+      "Duct Exhaust Fans",
+      "Workshop Equipment",
+      "Lab Agitators"
+    ],
+    "compatibleProducts": [
+      "M-105",
+      "P-105",
+      "GB-104"
+    ],
+    "relatedProducts": [
+      "C-100",
+      "C-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-C-102-DS",
+        "productId": "C-102",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/C-102-datasheet.pdf",
+        "title": "Compact Micro VFD C-102 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-C-102-IM",
+        "productId": "C-102",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/C-102-installation-manual.pdf",
+        "title": "Compact Micro VFD C-102 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-C-102-PB",
+        "productId": "C-102",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/C-102-brochure.pdf",
+        "title": "Compact Micro VFD C-102 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "C-103",
+    "model": "C-103",
+    "name": "Precision Servo Controller",
+    "category": "Controllers",
+    "description": "High-dynamics digital servo drive supporting EtherCAT communication. Offers precise position, velocity, and torque control loops for robotic arms and automated scanners.",
+    "image": "https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Input Voltage": "380-415 V AC",
+      "Output Voltage": "0-415 V AC",
+      "Current": "12 A",
+      "Power Rating": "5.0 kW",
+      "Frequency": "0-400 Hz",
+      "Protection Rating": "IP20",
+      "Communication Protocol": "EtherCAT / CANopen",
+      "Operating Temp": "0°C to +45°C",
+      "Mounting Type": "Panel Mount",
+      "Cooling": "Forced Fan"
+    },
+    "applications": [
+      "CNC Axes Drive",
+      "Packaging Pick & Place",
+      "Robotic Arm Joints",
+      "Rotary Indexers"
+    ],
+    "compatibleProducts": [
+      "M-102",
+      "GB-100",
+      "GB-104"
+    ],
+    "relatedProducts": [
+      "C-101",
+      "C-105"
+    ],
+    "documents": [
+      {
+        "id": "DOC-C-103-DS",
+        "productId": "C-103",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/C-103-datasheet.pdf",
+        "title": "Precision Servo Controller C-103 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-C-103-IM",
+        "productId": "C-103",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/C-103-installation-manual.pdf",
+        "title": "Precision Servo Controller C-103 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-C-103-PB",
+        "productId": "C-103",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/C-103-brochure.pdf",
+        "title": "Precision Servo Controller C-103 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "C-104",
+    "model": "C-104",
+    "name": "Smart Motor Soft Starter",
+    "category": "Controllers",
+    "description": "Three-phase motor soft starter with internal bypass contactor. Reduces electrical inrush current and mechanical starting shock in heavy centrifugal loads.",
+    "image": "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Input Voltage": "380-415 V AC",
+      "Output Voltage": "0-415 V AC",
+      "Current": "32 A",
+      "Power Rating": "15 kW",
+      "Frequency": "50/60 Hz",
+      "Protection Rating": "IP20",
+      "Communication Protocol": "Modbus RTU",
+      "Operating Temp": "-10°C to +45°C",
+      "Mounting Type": "DIN Rail / Backplate",
+      "Cooling": "Bypass Shunt / Convection"
+    },
+    "applications": [
+      "High Inertia Blowers",
+      "Large Centrifugal Pumps",
+      "Rotary Compressors",
+      "Stone Crushers"
+    ],
+    "compatibleProducts": [
+      "M-102",
+      "M-103",
+      "M-106",
+      "P-102",
+      "P-106",
+      "COMP-100",
+      "COMP-103"
+    ],
+    "relatedProducts": [
+      "C-100",
+      "C-102"
+    ],
+    "documents": [
+      {
+        "id": "DOC-C-104-DS",
+        "productId": "C-104",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/C-104-datasheet.pdf",
+        "title": "Smart Motor Soft Starter C-104 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-C-104-IM",
+        "productId": "C-104",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/C-104-installation-manual.pdf",
+        "title": "Smart Motor Soft Starter C-104 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-C-104-PB",
+        "productId": "C-104",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/C-104-brochure.pdf",
+        "title": "Smart Motor Soft Starter C-104 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "C-105",
+    "model": "C-105",
+    "name": "Rugged NEMA 4X / IP65 Outdoor VFD",
+    "category": "Controllers",
+    "description": "Washdown-rated, outdoor-compatible dustproof and waterproof variable frequency drive. Housed in solid aluminum enclosure with tactile keypad controls.",
+    "image": "https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Input Voltage": "380-415 V AC",
+      "Output Voltage": "0-415 V AC",
+      "Current": "16.5 A",
+      "Power Rating": "7.5 kW",
+      "Frequency": "50/60 Hz",
+      "Protection Rating": "IP65 (NEMA 4X)",
+      "Communication Protocol": "Profinet / Modbus RTU",
+      "Operating Temp": "-20°C to +55°C",
+      "Mounting Type": "Wall Mount Outdoor",
+      "Cooling": "External Heat Sink"
+    },
+    "applications": [
+      "Outdoor Irrigation Pumps",
+      "Rooftop Cooling Fans",
+      "Marine Deck Winches",
+      "Wastewater Clarifiers"
+    ],
+    "compatibleProducts": [
+      "M-101",
+      "M-104",
+      "M-107",
+      "M-109",
+      "P-103",
+      "P-107"
+    ],
+    "relatedProducts": [
+      "C-100",
+      "C-101",
+      "C-103"
+    ],
+    "documents": [
+      {
+        "id": "DOC-C-105-DS",
+        "productId": "C-105",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/C-105-datasheet.pdf",
+        "title": "Rugged NEMA 4X / IP65 Outdoor VFD C-105 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-C-105-IM",
+        "productId": "C-105",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/C-105-installation-manual.pdf",
+        "title": "Rugged NEMA 4X / IP65 Outdoor VFD C-105 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-C-105-PB",
+        "productId": "C-105",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/C-105-brochure.pdf",
+        "title": "Rugged NEMA 4X / IP65 Outdoor VFD C-105 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "GB-100",
+    "model": "GB-100",
+    "name": "Coaxial Helical Gearbox H100",
+    "category": "Gearboxes",
+    "description": "Compact in-line helical speed reducer offering smooth torque transmission, low noise levels, and high overload capacity. Pre-filled with synthetic lubricant.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Gear Ratio": "10:1",
+      "Input Power": "4 kW",
+      "Output Torque": "250 Nm",
+      "Input Speed": "1440 RPM",
+      "Output Speed": "144 RPM",
+      "Efficiency": "96%",
+      "Mounting": "Foot Mount (H/V)",
+      "Weight": "18 kg",
+      "Housing Material": "High-Grade Grey Cast Iron",
+      "Lubrication": "Synthetic ISO VG 220"
+    },
+    "applications": [
+      "Conveyor Belts",
+      "Packaging Machinery",
+      "Stirrers & Mixers",
+      "Material Hoists"
+    ],
+    "compatibleProducts": [
+      "M-100",
+      "M-108",
+      "C-103"
+    ],
+    "relatedProducts": [
+      "GB-101",
+      "GB-102",
+      "GB-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-GB-100-DS",
+        "productId": "GB-100",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/GB-100-datasheet.pdf",
+        "title": "Coaxial Helical Gearbox H100 GB-100 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-GB-100-IM",
+        "productId": "GB-100",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/GB-100-installation-manual.pdf",
+        "title": "Coaxial Helical Gearbox H100 GB-100 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-GB-100-PB",
+        "productId": "GB-100",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/GB-100-brochure.pdf",
+        "title": "Coaxial Helical Gearbox H100 GB-100 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "GB-101",
+    "model": "GB-101",
+    "name": "Medium Coaxial Helical Gearbox H101",
+    "category": "Gearboxes",
+    "description": "Strong coaxial speed reducer designed for medium machinery drives. Hardened ground gears deliver peak mechanical efficiency and resistance to shock loads.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Gear Ratio": "20:1",
+      "Input Power": "7.5 kW",
+      "Output Torque": "580 Nm",
+      "Input Speed": "1440 RPM",
+      "Output Speed": "72 RPM",
+      "Efficiency": "95%",
+      "Mounting": "Foot Mount / Flange Out",
+      "Weight": "34 kg",
+      "Housing Material": "Cast Iron GG20",
+      "Lubrication": "Synthetic ISO VG 320"
+    },
+    "applications": [
+      "Industrial Agitators",
+      "Screw Conveyors",
+      "Overhead Cranes",
+      "Assembly Lines"
+    ],
+    "compatibleProducts": [
+      "M-101",
+      "M-104",
+      "M-107",
+      "M-108"
+    ],
+    "relatedProducts": [
+      "GB-100",
+      "GB-103"
+    ],
+    "documents": [
+      {
+        "id": "DOC-GB-101-DS",
+        "productId": "GB-101",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/GB-101-datasheet.pdf",
+        "title": "Medium Coaxial Helical Gearbox H101 GB-101 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-GB-101-IM",
+        "productId": "GB-101",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/GB-101-installation-manual.pdf",
+        "title": "Medium Coaxial Helical Gearbox H101 GB-101 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-GB-101-PB",
+        "productId": "GB-101",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/GB-101-brochure.pdf",
+        "title": "Medium Coaxial Helical Gearbox H101 GB-101 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "GB-102",
+    "model": "GB-102",
+    "name": "Right-Angle Worm Gearbox",
+    "category": "Gearboxes",
+    "description": "Space-saving right-angle speed reducer featuring hollow output shaft configuration and self-locking worm thread action. Highly resistant to reversal of load.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Gear Ratio": "40:1",
+      "Input Power": "3 kW",
+      "Output Torque": "320 Nm",
+      "Input Speed": "1440 RPM",
+      "Output Speed": "36 RPM",
+      "Efficiency": "88%",
+      "Mounting": "Shaft Mounted Hollow",
+      "Weight": "14 kg",
+      "Housing Material": "Die-Cast Aluminum",
+      "Lubrication": "Polyglycol Oil PG 460"
+    },
+    "applications": [
+      "Elevator Gates",
+      "Rotary Feeders",
+      "Winch Drives",
+      "Airport Baggage Belts"
+    ],
+    "compatibleProducts": [
+      "M-101",
+      "C-100"
+    ],
+    "relatedProducts": [
+      "GB-100",
+      "GB-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-GB-102-DS",
+        "productId": "GB-102",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/GB-102-datasheet.pdf",
+        "title": "Right-Angle Worm Gearbox GB-102 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-GB-102-IM",
+        "productId": "GB-102",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/GB-102-installation-manual.pdf",
+        "title": "Right-Angle Worm Gearbox GB-102 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-GB-102-PB",
+        "productId": "GB-102",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/GB-102-brochure.pdf",
+        "title": "Right-Angle Worm Gearbox GB-102 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "GB-103",
+    "model": "GB-103",
+    "name": "Heavy-Duty Planetary Gearbox",
+    "category": "Gearboxes",
+    "description": "High-torque planetary speed reducer for heavy industrial plants. Coaxial multi-stage design allows massive torque distribution in a compact volumetric space.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Gear Ratio": "60:1",
+      "Input Power": "15 kW",
+      "Output Torque": "1800 Nm",
+      "Input Speed": "1440 RPM",
+      "Output Speed": "24 RPM",
+      "Efficiency": "94%",
+      "Mounting": "Flange Mount B14",
+      "Weight": "92 kg",
+      "Housing Material": "Spheroidal Graphite Cast Iron",
+      "Lubrication": "Mineral Oil ISO VG 220"
+    },
+    "applications": [
+      "Mining Conveyor Drives",
+      "Clay Extruders",
+      "Rotary Kiln Drives",
+      "Heavy Cranes"
+    ],
+    "compatibleProducts": [
+      "M-103",
+      "M-106",
+      "M-109"
+    ],
+    "relatedProducts": [
+      "GB-101",
+      "GB-102"
+    ],
+    "documents": [
+      {
+        "id": "DOC-GB-103-DS",
+        "productId": "GB-103",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/GB-103-datasheet.pdf",
+        "title": "Heavy-Duty Planetary Gearbox GB-103 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-GB-103-IM",
+        "productId": "GB-103",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/GB-103-installation-manual.pdf",
+        "title": "Heavy-Duty Planetary Gearbox GB-103 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-GB-103-PB",
+        "productId": "GB-103",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/GB-103-brochure.pdf",
+        "title": "Heavy-Duty Planetary Gearbox GB-103 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "GB-104",
+    "model": "GB-104",
+    "name": "Compact Helical-Bevel Gearbox",
+    "category": "Gearboxes",
+    "description": "Highly efficient 90-degree helical bevel speed reducer. Combines the space savings of a worm gearbox with the mechanical high efficiency (96%) of helical gear designs.",
+    "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Gear Ratio": "5:1",
+      "Input Power": "2.2 kW",
+      "Output Torque": "120 Nm",
+      "Input Speed": "1440 RPM",
+      "Output Speed": "288 RPM",
+      "Efficiency": "96%",
+      "Mounting": "Foot / Flange Mount",
+      "Weight": "11 kg",
+      "Housing Material": "Die-Cast Aluminum",
+      "Lubrication": "Synthetic ISO VG 150"
+    },
+    "applications": [
+      "Automated Packaging",
+      "Rotary Labelers",
+      "Filling Lines",
+      "Woodworking Lathes"
+    ],
+    "compatibleProducts": [
+      "M-100",
+      "M-105",
+      "M-108",
+      "C-102",
+      "C-103"
+    ],
+    "relatedProducts": [
+      "GB-100",
+      "GB-102"
+    ],
+    "documents": [
+      {
+        "id": "DOC-GB-104-DS",
+        "productId": "GB-104",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/GB-104-datasheet.pdf",
+        "title": "Compact Helical-Bevel Gearbox GB-104 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-GB-104-IM",
+        "productId": "GB-104",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/GB-104-installation-manual.pdf",
+        "title": "Compact Helical-Bevel Gearbox GB-104 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-GB-104-PB",
+        "productId": "GB-104",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/GB-104-brochure.pdf",
+        "title": "Compact Helical-Bevel Gearbox GB-104 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "V-100",
+    "model": "V-100",
+    "name": "High-Performance Stainless Ball Valve",
+    "category": "Valves",
+    "description": "Full-port two-piece stainless steel ball valve with PTFE seals for high chemical compatibility and isolation flow control. Standard flanged connection.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Valve Type": "Ball Valve",
+      "Nominal Diameter": "DN50 (2 Inch)",
+      "Pressure Rating": "PN16",
+      "Material": "SS316",
+      "Connection Type": "Flanged RF",
+      "Operating Temp": "-20°C to +180°C",
+      "Flow Coefficient (Cv)": "240",
+      "Media Type": "Water, Chemicals, Mild Solvents",
+      "Operation": "Manual Handle / ISO Mount",
+      "Connection": "DN50",
+      "Pressure": "16 bar"
+    },
+    "applications": [
+      "Chemical Plant Piping",
+      "Process Fluid Isolation",
+      "Hot Water Pipelines",
+      "Cooling Loops"
+    ],
+    "compatibleProducts": [
+      "P-100",
+      "P-101",
+      "P-103"
+    ],
+    "relatedProducts": [
+      "V-101",
+      "V-102",
+      "V-103"
+    ],
+    "documents": [
+      {
+        "id": "DOC-V-100-DS",
+        "productId": "V-100",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/V-100-datasheet.pdf",
+        "title": "High-Performance Stainless Ball Valve V-100 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-V-100-IM",
+        "productId": "V-100",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/V-100-installation-manual.pdf",
+        "title": "High-Performance Stainless Ball Valve V-100 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-V-100-PB",
+        "productId": "V-100",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/V-100-brochure.pdf",
+        "title": "High-Performance Stainless Ball Valve V-100 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 2,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "V-101",
+    "model": "V-101",
+    "name": "High-Pressure Cast Steel Gate Valve",
+    "category": "Valves",
+    "description": "Solid wedge gate valve for high-pressure isolation in power and heavy steam pipelines. Rising stem design provides clear visual indication of open/closed position.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Valve Type": "Gate Valve",
+      "Nominal Diameter": "DN80 (3 Inch)",
+      "Pressure Rating": "PN40",
+      "Material": "Carbon Steel WCB",
+      "Connection Type": "Flanged RF PN40",
+      "Operating Temp": "-29°C to +425°C",
+      "Flow Coefficient (Cv)": "580",
+      "Media Type": "High-Pressure Steam, Water, Oil",
+      "Operation": "Handwheel Operated"
+    },
+    "applications": [
+      "Steam Feed Mains",
+      "Thermal Fluid Isolation",
+      "Oil Refinery Piping",
+      "High-Pressure Condensate"
+    ],
+    "compatibleProducts": [
+      "M-104",
+      "P-102",
+      "P-106"
+    ],
+    "relatedProducts": [
+      "V-100",
+      "V-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-V-101-DS",
+        "productId": "V-101",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/V-101-datasheet.pdf",
+        "title": "High-Pressure Cast Steel Gate Valve V-101 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-V-101-IM",
+        "productId": "V-101",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/V-101-installation-manual.pdf",
+        "title": "High-Pressure Cast Steel Gate Valve V-101 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-V-101-PB",
+        "productId": "V-101",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/V-101-brochure.pdf",
+        "title": "High-Pressure Cast Steel Gate Valve V-101 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "V-102",
+    "model": "V-102",
+    "name": "Pneumatic Actuated Butterfly Valve",
+    "category": "Valves",
+    "description": "Wafer-style butterfly valve with resilient EPDM liner, fitted with a double-acting pneumatic rotary actuator. Fast response control for municipal and industrial water lines.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Valve Type": "Butterfly Valve",
+      "Nominal Diameter": "DN100 (4 Inch)",
+      "Pressure Rating": "PN10 / PN16",
+      "Material": "Ductile Iron GGG40",
+      "Connection Type": "Wafer (Bolted)",
+      "Operating Temp": "-10°C to +110°C",
+      "Flow Coefficient (Cv)": "620",
+      "Media Type": "Water, Waste Slurry, Low-Pressure Air",
+      "Operation": "Pneumatic Double-Acting"
+    },
+    "applications": [
+      "Cooling Water Towers",
+      "Wastewater Treatment Systems",
+      "Bulk Dry Loading",
+      "HVAC Water Control"
+    ],
+    "compatibleProducts": [
+      "P-101",
+      "P-104",
+      "P-106",
+      "COMP-100"
+    ],
+    "relatedProducts": [
+      "V-100",
+      "V-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-V-102-DS",
+        "productId": "V-102",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/V-102-datasheet.pdf",
+        "title": "Pneumatic Actuated Butterfly Valve V-102 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-V-102-IM",
+        "productId": "V-102",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/V-102-installation-manual.pdf",
+        "title": "Pneumatic Actuated Butterfly Valve V-102 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-V-102-PB",
+        "productId": "V-102",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/V-102-brochure.pdf",
+        "title": "Pneumatic Actuated Butterfly Valve V-102 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "V-103",
+    "model": "V-103",
+    "name": "Sanitary Threaded Globe Valve",
+    "category": "Valves",
+    "description": "High-precision sanitary globe valve with body machined from solid SS316. Threaded connection for easy washdowns in food, beverage, and biotech piping.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Valve Type": "Globe Valve",
+      "Nominal Diameter": "DN25 (1 Inch)",
+      "Pressure Rating": "PN16",
+      "Material": "Stainless Steel 316L",
+      "Connection Type": "Threaded NPT / Tri-Clamp",
+      "Operating Temp": "-20°C to +150°C",
+      "Flow Coefficient (Cv)": "18",
+      "Media Type": "Food Juices, Sanitizers, Pure Steam",
+      "Operation": "Manual Handle / Digital Control"
+    },
+    "applications": [
+      "Food Processing Lines",
+      "Beverage Distilleries",
+      "CIP (Clean-in-Place) Loop",
+      "Pharma Liquid Feed"
+    ],
+    "compatibleProducts": [
+      "M-104",
+      "P-103",
+      "P-105"
+    ],
+    "relatedProducts": [
+      "V-100",
+      "V-104"
+    ],
+    "documents": [
+      {
+        "id": "DOC-V-103-DS",
+        "productId": "V-103",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/V-103-datasheet.pdf",
+        "title": "Sanitary Threaded Globe Valve V-103 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-V-103-IM",
+        "productId": "V-103",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/V-103-installation-manual.pdf",
+        "title": "Sanitary Threaded Globe Valve V-103 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-V-103-PB",
+        "productId": "V-103",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/V-103-brochure.pdf",
+        "title": "Sanitary Threaded Globe Valve V-103 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "V-104",
+    "model": "V-104",
+    "name": "Dual Plate Non-Return Check Valve",
+    "category": "Valves",
+    "description": "Compact dual-plate wafer check valve. Prevents damaging hydraulic surge backflow when pumps are shut down. Closes silently with spring-assisted spring action.",
+    "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Valve Type": "Check Valve",
+      "Nominal Diameter": "DN80 (3 Inch)",
+      "Pressure Rating": "PN16",
+      "Material": "Stainless Steel 316",
+      "Connection Type": "Wafer (Standard)",
+      "Operating Temp": "-20°C to +200°C",
+      "Flow Coefficient (Cv)": "310",
+      "Media Type": "Water, Chemical Solvents, Oil",
+      "Operation": "Spring-Assisted Self-Closing"
+    },
+    "applications": [
+      "Pump Discharge Lines",
+      "Backflow Preventers",
+      "Boiler Return Mains",
+      "Deep Well Uplift"
+    ],
+    "compatibleProducts": [
+      "P-100",
+      "P-107"
+    ],
+    "relatedProducts": [
+      "V-100",
+      "V-101",
+      "V-102"
+    ],
+    "documents": [
+      {
+        "id": "DOC-V-104-DS",
+        "productId": "V-104",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/V-104-datasheet.pdf",
+        "title": "Dual Plate Non-Return Check Valve V-104 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-V-104-IM",
+        "productId": "V-104",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/V-104-installation-manual.pdf",
+        "title": "Dual Plate Non-Return Check Valve V-104 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-V-104-PB",
+        "productId": "V-104",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/V-104-brochure.pdf",
+        "title": "Dual Plate Non-Return Check Valve V-104 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "COMP-100",
+    "model": "COMP-100",
+    "name": "Heavy-Duty Reciprocating Air Compressor",
+    "category": "Compressors",
+    "description": "Cast-iron two-stage piston air compressor complete with safety-certified 270L air receiver tank. Fully automatic pressure switch control for general workshop air loops.",
+    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "5.5 kW",
+      "Maximum Pressure": "10 bar",
+      "Air Flow": "600 L/min",
+      "Voltage": "415 V",
+      "Speed": "1440 RPM",
+      "Tank Capacity": "270 L",
+      "Noise Level": "75 dB(A)",
+      "Cooling Type": "Air Cooled - Flywheel Fan",
+      "Weight": "165 kg",
+      "Operating Temp": "5°C to 45°C",
+      "Drive Type": "V-Belt Driven"
+    },
+    "applications": [
+      "Pneumatic Assembly Tools",
+      "Automotive Painting",
+      "Sandblasting Cabinets",
+      "Workshop Air Distribution"
+    ],
+    "compatibleProducts": [
+      "C-104",
+      "V-102"
+    ],
+    "relatedProducts": [
+      "COMP-102",
+      "COMP-103"
+    ],
+    "documents": [
+      {
+        "id": "DOC-COMP-100-DS",
+        "productId": "COMP-100",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/COMP-100-datasheet.pdf",
+        "title": "Heavy-Duty Reciprocating Air Compressor COMP-100 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-COMP-100-IM",
+        "productId": "COMP-100",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/COMP-100-installation-manual.pdf",
+        "title": "Heavy-Duty Reciprocating Air Compressor COMP-100 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-COMP-100-PB",
+        "productId": "COMP-100",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/COMP-100-brochure.pdf",
+        "title": "Heavy-Duty Reciprocating Air Compressor COMP-100 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "COMP-101",
+    "model": "COMP-101",
+    "name": "High-Capacity Rotary Screw Compressor",
+    "category": "Compressors",
+    "description": "Industrial continuous duty rotary screw air compressor. Tankless package includes integrated refrigerant dryer and line filters for extremely dry, oil-free industrial instrumentation air.",
+    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "22 kW",
+      "Maximum Pressure": "13 bar",
+      "Air Flow": "3000 L/min",
+      "Voltage": "415 V",
+      "Speed": "2900 RPM",
+      "Tank Capacity": "Tankless (Continuous Loop)",
+      "Noise Level": "68 dB(A)",
+      "Cooling Type": "Oil Injected / Air Cooler",
+      "Weight": "480 kg",
+      "Operating Temp": "5°C to 45°C",
+      "Drive Type": "Direct Coaxial Drive"
+    },
+    "applications": [
+      "Automation Assembly Lines",
+      "Pneumatic Control Valves",
+      "Food Packaging Lines",
+      "Chemical Instrumentation"
+    ],
+    "compatibleProducts": [
+      "M-109",
+      "C-101"
+    ],
+    "relatedProducts": [
+      "COMP-102",
+      "COMP-103"
+    ],
+    "documents": [
+      {
+        "id": "DOC-COMP-101-DS",
+        "productId": "COMP-101",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/COMP-101-datasheet.pdf",
+        "title": "High-Capacity Rotary Screw Compressor COMP-101 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-COMP-101-IM",
+        "productId": "COMP-101",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/COMP-101-installation-manual.pdf",
+        "title": "High-Capacity Rotary Screw Compressor COMP-101 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-COMP-101-PB",
+        "productId": "COMP-101",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/COMP-101-brochure.pdf",
+        "title": "High-Capacity Rotary Screw Compressor COMP-101 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "COMP-102",
+    "model": "COMP-102",
+    "name": "Silent Rotary Scroll Compressor",
+    "category": "Compressors",
+    "description": "Ultra-quiet, 100% oil-free rotary scroll compressor. Engineered for lab, medical research, and precision clean manufacturing setups where oil fumes cannot be tolerated.",
+    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "7.5 kW",
+      "Maximum Pressure": "8 bar",
+      "Air Flow": "800 L/min",
+      "Voltage": "415 V",
+      "Speed": "2900 RPM",
+      "Tank Capacity": "200 L",
+      "Noise Level": "62 dB(A)",
+      "Cooling Type": "Forced Air Cooled",
+      "Weight": "145 kg",
+      "Operating Temp": "5°C to 40°C",
+      "Drive Type": "Direct Belt Drive"
+    },
+    "applications": [
+      "Medical Labs",
+      "Microchip Manufacturing",
+      "Dental Air Supply",
+      "Precision Lab Testers"
+    ],
+    "compatibleProducts": [
+      "M-102",
+      "C-100"
+    ],
+    "relatedProducts": [
+      "COMP-100",
+      "COMP-101"
+    ],
+    "documents": [
+      {
+        "id": "DOC-COMP-102-DS",
+        "productId": "COMP-102",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/COMP-102-datasheet.pdf",
+        "title": "Silent Rotary Scroll Compressor COMP-102 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-COMP-102-IM",
+        "productId": "COMP-102",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/COMP-102-installation-manual.pdf",
+        "title": "Silent Rotary Scroll Compressor COMP-102 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-COMP-102-PB",
+        "productId": "COMP-102",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/COMP-102-brochure.pdf",
+        "title": "Silent Rotary Scroll Compressor COMP-102 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  },
+  {
+    "id": "COMP-103",
+    "model": "COMP-103",
+    "name": "Portable Site Air Compressor",
+    "category": "Compressors",
+    "description": "Ruggedized portable air compressor mounted on heavy-duty steel wheels. Built-in cage frame protects internal parts from dust and drops on construction sites.",
+    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
+    "specifications": {
+      "Power": "11 kW",
+      "Maximum Pressure": "10 bar",
+      "Air Flow": "1200 L/min",
+      "Voltage": "415 V",
+      "Speed": "1440 RPM",
+      "Tank Capacity": "500 L",
+      "Noise Level": "78 dB(A)",
+      "Cooling Type": "Air Cooled",
+      "Weight": "290 kg",
+      "Operating Temp": "-5°C to +45°C",
+      "Drive Type": "Belt Driven Engine"
+    },
+    "applications": [
+      "Infrastructure Sites",
+      "Pneumatic Jackhammers",
+      "Sandblasting Rig Yards",
+      "Outdoor Maintenance Work"
+    ],
+    "compatibleProducts": [
+      "C-101",
+      "C-104"
+    ],
+    "relatedProducts": [
+      "COMP-100",
+      "COMP-101"
+    ],
+    "documents": [
+      {
+        "id": "DOC-COMP-103-DS",
+        "productId": "COMP-103",
+        "type": "Technical Datasheet",
+        "version": "1.0",
+        "file": "/documents/COMP-103-datasheet.pdf",
+        "title": "Portable Site Air Compressor COMP-103 - Technical Datasheet",
+        "fileSize": "1.2 MB",
+        "publishDate": "2025-06-15"
+      },
+      {
+        "id": "DOC-COMP-103-IM",
+        "productId": "COMP-103",
+        "type": "Installation Manual",
+        "version": "2.1",
+        "file": "/documents/COMP-103-installation-manual.pdf",
+        "title": "Portable Site Air Compressor COMP-103 - Installation & Maintenance Guide",
+        "fileSize": "3.4 MB",
+        "publishDate": "2025-08-10"
+      },
+      {
+        "id": "DOC-COMP-103-PB",
+        "productId": "COMP-103",
+        "type": "Product Brochure",
+        "version": "1.1",
+        "file": "/documents/COMP-103-brochure.pdf",
+        "title": "Portable Site Air Compressor COMP-103 - Product Overview Brochure",
+        "fileSize": "2.5 MB",
+        "publishDate": "2025-01-20"
+      }
+    ],
+    "version": 1,
+    "lastUpdated": "18 Aug 2026"
+  }
+]

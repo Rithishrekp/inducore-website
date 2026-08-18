@@ -1,0 +1,195 @@
+[
+  {
+    "requestId": "demo-update-req-999",
+    "productId": "M-101",
+    "changes": {
+      "Power": {
+        "old": "7.5 kW",
+        "new": "8.2 kW"
+      },
+      "Speed": {
+        "old": "1440 RPM",
+        "new": "1460 RPM"
+      },
+      "Weight": {
+        "old": "52 kg",
+        "new": "55 kg"
+      },
+      "documentVersion": {
+        "old": "1.0",
+        "new": "2.0"
+      }
+    },
+    "approvalId": "APP-10023",
+    "approvedBy": "admin@example.com",
+    "previousVersion": 1,
+    "newVersion": 2,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "2.0",
+    "timestamp": "2026-08-18T11:18:52.902Z"
+  },
+  {
+    "requestId": "upd-M-101-1787056848",
+    "productId": "M-101",
+    "changes": {
+      "documentVersion": {
+        "old": "2.0",
+        "new": "1.0"
+      }
+    },
+    "approvalId": "APP-1712661F",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 2,
+    "newVersion": 3,
+    "documentName": "N/A",
+    "documentVersion": "1.0",
+    "timestamp": "2026-08-18T12:40:48.185Z"
+  },
+  {
+    "requestId": "upd-P-100-1787056848",
+    "productId": "P-100",
+    "changes": {
+      "FlowRate": {
+        "old": null,
+        "new": "120 L/min"
+      },
+      "Pressure": {
+        "old": null,
+        "new": "8 bar"
+      },
+      "Temperature": {
+        "old": null,
+        "new": "80 C"
+      }
+    },
+    "approvalId": "APP-A81A0D99",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 1,
+    "newVersion": 2,
+    "documentName": "N/A",
+    "documentVersion": "1.0",
+    "timestamp": "2026-08-18T12:40:48.259Z"
+  },
+  {
+    "requestId": "upd-V-100-1787056848",
+    "productId": "V-100",
+    "changes": {
+      "Material": {
+        "old": "Stainless Steel 316",
+        "new": "SS316"
+      },
+      "Connection": {
+        "old": null,
+        "new": "DN50"
+      },
+      "Pressure": {
+        "old": null,
+        "new": "16 bar"
+      }
+    },
+    "approvalId": "APP-9B4F68E7",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 1,
+    "newVersion": 2,
+    "documentName": "N/A",
+    "documentVersion": "1.0",
+    "timestamp": "2026-08-18T12:40:48.324Z"
+  },
+  {
+    "requestId": "upd-M-101-1787063996",
+    "productId": "M-101",
+    "changes": {
+      "Power": {
+        "old": "8.2 kW",
+        "new": "7.5 kW"
+      },
+      "Weight": {
+        "old": "55 kg",
+        "new": "45 kg"
+      },
+      "documentVersion": {
+        "old": "1.0",
+        "new": "v2.0"
+      }
+    },
+    "approvalId": "APP-60F177E6",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 3,
+    "newVersion": 4,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:39:56.883Z"
+  },
+  {
+    "requestId": "upd-M-101-1787064002",
+    "productId": "M-101",
+    "changes": {},
+    "approvalId": "APP-FD91E3EA",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 4,
+    "newVersion": 5,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:40:02.377Z"
+  },
+  {
+    "requestId": "upd-M-101-1787064043",
+    "productId": "M-101",
+    "changes": {},
+    "approvalId": "APP-EF221BB3",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 5,
+    "newVersion": 6,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:40:43.681Z"
+  },
+  {
+    "requestId": "upd-M-101-1787064044",
+    "productId": "M-101",
+    "changes": {},
+    "approvalId": "APP-0B7C2034",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 6,
+    "newVersion": 7,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:40:44.740Z"
+  },
+  {
+    "requestId": "upd-M-101-1787064053",
+    "productId": "M-101",
+    "changes": {},
+    "approvalId": "APP-0A9E08E8",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 7,
+    "newVersion": 8,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:40:53.433Z"
+  },
+  {
+    "requestId": "upd-M-101-1787064059",
+    "productId": "M-101",
+    "changes": {},
+    "approvalId": "APP-ADDFDAEB",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 8,
+    "newVersion": 9,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:40:59.838Z"
+  },
+  {
+    "requestId": "upd-M-101-1787064154",
+    "productId": "M-101",
+    "changes": {},
+    "approvalId": "APP-1CC77F64",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 9,
+    "newVersion": 10,
+    "documentName": "technical_spec_2026.pdf",
+    "documentVersion": "v2.0",
+    "timestamp": "2026-08-18T14:42:34.968Z"
+  }
+]

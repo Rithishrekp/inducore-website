@@ -1,0 +1,1121 @@
+{
+  "demo-update-req-999": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "demo-update-req-999",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 1,
+      "newVersion": 2,
+      "changedFields": [
+        "power",
+        "speed",
+        "weight",
+        "documentVersion"
+      ],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "8.2 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "55 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 2,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T11:18:52.903Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 1,
+      "newVersion": 2
+    }
+  },
+  "req-123": {
+    "status": "rejected",
+    "httpStatus": 403,
+    "responseBody": {
+      "success": false,
+      "status": "approval_required",
+      "message": "Human approval is required before product data can be updated."
+    },
+    "timestamp": "2026-08-18T12:19:42.784Z"
+  },
+  "upd-M-101-1787056848": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787056848",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 2,
+      "newVersion": 3,
+      "changedFields": [
+        "documentVersion"
+      ],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "8.2 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "55 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "1.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 3,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T12:40:48.186Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 2,
+      "newVersion": 3
+    }
+  },
+  "upd-P-100-1787056848": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-P-100-1787056848",
+      "productId": "P-100",
+      "modelNumber": "P-100",
+      "previousVersion": 1,
+      "newVersion": 2,
+      "changedFields": [
+        "flowRate",
+        "pressure",
+        "temperature"
+      ],
+      "updatedProduct": {
+        "id": "P-100",
+        "model": "P-100",
+        "name": "Centrifugal Water Pump",
+        "category": "Pumps",
+        "description": "Industrial centrifugal pump for boosting water supply and fluid transport in HVAC and factory systems. Made of robust Grade 304 Stainless Steel for excellent service life.",
+        "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Flow Rate": "100 L/min",
+          "Maximum Pressure": "10 bar",
+          "Head": "32 m",
+          "Power": "5 kW",
+          "Voltage": "415 V",
+          "Speed": "1450 RPM",
+          "Material": "Stainless Steel 304",
+          "Inlet Size": "1.5 Inch",
+          "Outlet Size": "1.0 Inch",
+          "Operating Temp": "-10°C to +90°C",
+          "Weight": "28 kg",
+          "IP Rating": "IP55",
+          "FlowRate": "120 L/min",
+          "Pressure": "8 bar",
+          "Temperature": "80 C"
+        },
+        "applications": [
+          "HVAC Chilled Water",
+          "Industrial Process Water",
+          "Irrigation Systems",
+          "Pressure Boosting"
+        ],
+        "compatibleProducts": [
+          "M-100",
+          "M-101",
+          "C-100",
+          "V-100",
+          "V-104"
+        ],
+        "relatedProducts": [
+          "P-101",
+          "P-103",
+          "P-105"
+        ],
+        "documents": [
+          {
+            "id": "DOC-P-100-DS",
+            "productId": "P-100",
+            "type": "Technical Datasheet",
+            "version": "1.0",
+            "file": "/documents/P-100-datasheet.pdf",
+            "title": "Centrifugal Water Pump P-100 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "2025-06-15"
+          },
+          {
+            "id": "DOC-P-100-IM",
+            "productId": "P-100",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/P-100-installation-manual.pdf",
+            "title": "Centrifugal Water Pump P-100 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-P-100-PB",
+            "productId": "P-100",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/P-100-brochure.pdf",
+            "title": "Centrifugal Water Pump P-100 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 2,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T12:40:48.261Z",
+    "details": {
+      "productId": "P-100",
+      "previousVersion": 1,
+      "newVersion": 2
+    }
+  },
+  "upd-V-100-1787056848": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-V-100-1787056848",
+      "productId": "V-100",
+      "modelNumber": "V-100",
+      "previousVersion": 1,
+      "newVersion": 2,
+      "changedFields": [
+        "material",
+        "connection",
+        "pressure"
+      ],
+      "updatedProduct": {
+        "id": "V-100",
+        "model": "V-100",
+        "name": "High-Performance Stainless Ball Valve",
+        "category": "Valves",
+        "description": "Full-port two-piece stainless steel ball valve with PTFE seals for high chemical compatibility and isolation flow control. Standard flanged connection.",
+        "image": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Valve Type": "Ball Valve",
+          "Nominal Diameter": "DN50 (2 Inch)",
+          "Pressure Rating": "PN16",
+          "Material": "SS316",
+          "Connection Type": "Flanged RF",
+          "Operating Temp": "-20°C to +180°C",
+          "Flow Coefficient (Cv)": "240",
+          "Media Type": "Water, Chemicals, Mild Solvents",
+          "Operation": "Manual Handle / ISO Mount",
+          "Connection": "DN50",
+          "Pressure": "16 bar"
+        },
+        "applications": [
+          "Chemical Plant Piping",
+          "Process Fluid Isolation",
+          "Hot Water Pipelines",
+          "Cooling Loops"
+        ],
+        "compatibleProducts": [
+          "P-100",
+          "P-101",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "V-101",
+          "V-102",
+          "V-103"
+        ],
+        "documents": [
+          {
+            "id": "DOC-V-100-DS",
+            "productId": "V-100",
+            "type": "Technical Datasheet",
+            "version": "1.0",
+            "file": "/documents/V-100-datasheet.pdf",
+            "title": "High-Performance Stainless Ball Valve V-100 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "2025-06-15"
+          },
+          {
+            "id": "DOC-V-100-IM",
+            "productId": "V-100",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/V-100-installation-manual.pdf",
+            "title": "High-Performance Stainless Ball Valve V-100 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-V-100-PB",
+            "productId": "V-100",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/V-100-brochure.pdf",
+            "title": "High-Performance Stainless Ball Valve V-100 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 2,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T12:40:48.325Z",
+    "details": {
+      "productId": "V-100",
+      "previousVersion": 1,
+      "newVersion": 2
+    }
+  },
+  "upd-M-101-1787063996": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787063996",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 3,
+      "newVersion": 4,
+      "changedFields": [
+        "power",
+        "weight",
+        "documentVersion"
+      ],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 4,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:39:56.885Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 3,
+      "newVersion": 4
+    }
+  },
+  "upd-M-101-1787064002": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787064002",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 4,
+      "newVersion": 5,
+      "changedFields": [],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 5,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:40:02.379Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 4,
+      "newVersion": 5
+    }
+  },
+  "upd-M-101-1787064043": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787064043",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 5,
+      "newVersion": 6,
+      "changedFields": [],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 6,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:40:43.683Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 5,
+      "newVersion": 6
+    }
+  },
+  "upd-M-101-1787064044": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787064044",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 6,
+      "newVersion": 7,
+      "changedFields": [],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 7,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:40:44.742Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 6,
+      "newVersion": 7
+    }
+  },
+  "upd-M-101-1787064053": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787064053",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 7,
+      "newVersion": 8,
+      "changedFields": [],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 8,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:40:53.435Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 7,
+      "newVersion": 8
+    }
+  },
+  "upd-M-101-1787064059": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787064059",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 8,
+      "newVersion": 9,
+      "changedFields": [],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 9,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:40:59.840Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 8,
+      "newVersion": 9
+    }
+  },
+  "upd-M-101-1787064154": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-M-101-1787064154",
+      "productId": "M-101",
+      "modelNumber": "M-101",
+      "previousVersion": 9,
+      "newVersion": 10,
+      "changedFields": [],
+      "updatedProduct": {
+        "id": "M-101",
+        "model": "M-101",
+        "name": "Premium High Efficiency Motor",
+        "category": "Motors",
+        "description": "Ultra-high efficiency IE3 class motor engineered to optimize energy costs in continuous process operations. Perfect for heavy-duty pumps, compressors, and high-demand applications.",
+        "image": "https://images.unsplash.com/photo-1620626011761-9963d7521576?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Power": "7.5 kW",
+          "Voltage": "415 V",
+          "Frequency": "50 Hz",
+          "Speed": "1460 RPM",
+          "Current": "14.2 A",
+          "Efficiency": "91.0%",
+          "Power Factor": "0.86",
+          "IP Rating": "IP55",
+          "Insulation Class": "Class F",
+          "Frame Size": "132M",
+          "Mounting": "Foot Mount (B3)",
+          "Weight": "45 kg",
+          "Operating Temp": "-20°C to +40°C",
+          "Housing Material": "Cast Iron",
+          "Cooling": "TEFC (Totally Enclosed Fan Cooled)"
+        },
+        "applications": [
+          "Industrial Pumps",
+          "Air Compressors",
+          "HVAC Blowers",
+          "Manufacturing Equipment"
+        ],
+        "compatibleProducts": [
+          "C-100",
+          "C-105",
+          "GB-101",
+          "GB-102",
+          "P-100",
+          "P-103"
+        ],
+        "relatedProducts": [
+          "M-100",
+          "M-102",
+          "M-103",
+          "M-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-M-101-DS",
+            "productId": "M-101",
+            "type": "Technical Datasheet",
+            "version": "v2.0",
+            "file": "/documents/M-101-datasheet.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "18 Aug 2026"
+          },
+          {
+            "id": "DOC-M-101-IM",
+            "productId": "M-101",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/M-101-installation-manual.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-M-101-PB",
+            "productId": "M-101",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/M-101-brochure.pdf",
+            "title": "Premium High Efficiency Motor M-101 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 10,
+        "lastUpdated": "18 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-18T14:42:34.970Z",
+    "details": {
+      "productId": "M-101",
+      "previousVersion": 9,
+      "newVersion": 10
+    }
+  }
+}
