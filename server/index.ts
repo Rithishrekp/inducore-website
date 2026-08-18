@@ -6,10 +6,35 @@ import path from "path";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Resolve DB file paths
-const PRODUCTS_DB_PATH = path.join(process.cwd(), "server/data/products.json");
-const AUDITS_DB_PATH = path.join(process.cwd(), "server/data/audits.json");
-const UPDATES_DB_PATH = path.join(process.cwd(), "server/data/updates.json");
+// Resolve DB file paths dynamically to support Vercel serverless functions (writeable /tmp)
+const IS_VERCEL = !!process.env.VERCEL;
+const BASE_DATA_DIR = IS_VERCEL ? "/tmp" : path.join(process.cwd(), "server/data");
+
+const PRODUCTS_DB_PATH = path.join(BASE_DATA_DIR, "products.json");
+const AUDITS_DB_PATH = path.join(BASE_DATA_DIR, "audits.json");
+const UPDATES_DB_PATH = path.join(BASE_DATA_DIR, "updates.json");
+
+// Ensure JSON database files are initialized in Vercel's /tmp filesystem
+if (IS_VERCEL) {
+  const srcProducts = path.join(process.cwd(), "server/data/products.json");
+  const srcAudits = path.join(process.cwd(), "server/data/audits.json");
+  const srcUpdates = path.join(process.cwd(), "server/data/updates.json");
+
+  try {
+    if (!fs.existsSync(PRODUCTS_DB_PATH) && fs.existsSync(srcProducts)) {
+      fs.copyFileSync(srcProducts, PRODUCTS_DB_PATH);
+    }
+    if (!fs.existsSync(AUDITS_DB_PATH) && fs.existsSync(srcAudits)) {
+      fs.copyFileSync(srcAudits, AUDITS_DB_PATH);
+    }
+    if (!fs.existsSync(UPDATES_DB_PATH) && fs.existsSync(srcUpdates)) {
+      fs.copyFileSync(srcUpdates, UPDATES_DB_PATH);
+    }
+    console.log("Initialized serverless JSON storage databases in /tmp.");
+  } catch (err) {
+    console.error("Failed to copy databases to /tmp:", err);
+  }
+}
 
 // Middleware
 app.use(express.json());
@@ -442,8 +467,12 @@ if (fs.existsSync(distPath)) {
   console.log(`Frontend build folder not found at ${distPath}. Running in API-only mode.`);
 }
 
-// Start the Express app
-app.listen(PORT, () => {
-  console.log(`InduCore Integration Server running on http://localhost:${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/api/integration/health`);
-});
+// Start the Express app (only if running standalone, Vercel loads the app directly)
+if (!IS_VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`InduCore Integration Server running on http://localhost:${PORT}`);
+    console.log(`Health check: http://localhost:${PORT}/api/integration/health`);
+  });
+}
+
+export default app;
