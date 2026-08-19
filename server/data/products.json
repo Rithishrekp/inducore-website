@@ -1792,11 +1792,18 @@
       "Output Torque": "250 Nm",
       "Input Speed": "1440 RPM",
       "Output Speed": "144 RPM",
-      "Efficiency": "96%",
+      "Efficiency": "95%",
       "Mounting": "Foot Mount (H/V)",
       "Weight": "18 kg",
       "Housing Material": "High-Grade Grey Cast Iron",
-      "Lubrication": "Synthetic ISO VG 220"
+      "Lubrication": "Synthetic ISO VG 220",
+      "Power": "4 kW",
+      "Mount": "Foot Mount",
+      "Speed": "1440 RPM",
+      "Ratio": "10:1",
+      "Torque": "250 Nm",
+      "Housing / Material": "Cast Iron",
+      "Lubricant": "Synthetic ISO VG 220"
     },
     "applications": [
       "Conveyor Belts",
@@ -1819,11 +1826,11 @@
         "id": "DOC-GB-100-DS",
         "productId": "GB-100",
         "type": "Technical Datasheet",
-        "version": "1.0",
+        "version": "v1.0",
         "file": "/documents/GB-100-datasheet.pdf",
         "title": "Coaxial Helical Gearbox H100 GB-100 - Technical Datasheet",
         "fileSize": "1.2 MB",
-        "publishDate": "2025-06-15"
+        "publishDate": "19 Aug 2026"
       },
       {
         "id": "DOC-GB-100-IM",
@@ -1846,8 +1853,8 @@
         "publishDate": "2025-01-20"
       }
     ],
-    "version": 1,
-    "lastUpdated": "18 Aug 2026"
+    "version": 2,
+    "lastUpdated": "19 Aug 2026"
   },
   {
     "id": "GB-101",

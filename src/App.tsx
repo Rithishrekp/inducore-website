@@ -17,7 +17,7 @@ function App() {
   const [currentHash, setCurrentHash] = useState(window.location.hash || "#home");
   const [compareProductIds, setCompareProductIds] = useState<string[]>([]);
   
-  // Initialize with static products data as immediate fallback
+  // Initialize with initial catalog state
   const [products, setProducts] = useState<Product[]>(() => {
     return PRODUCTS.map((p) => ({
       ...p,
@@ -26,24 +26,26 @@ function App() {
     }));
   });
 
-  // Fetch updated catalog from Express API
+  // Fetch updated catalog dynamically from API
   const fetchProducts = async () => {
     try {
-      // If frontend is run locally on port 5173, point to backend on port 5000.
-      // In production, backend and frontend are hosted on the same origin (relative route).
       const isViteLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
       const apiUrl = isViteLocal && window.location.port !== "5000"
         ? "http://localhost:5000/api/products"
         : "/api/products";
 
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl, {
+        cache: "no-store",
+        headers: { "Pragma": "no-cache" }
+      });
       if (response.ok) {
         const data = await response.json();
-        setProducts(data);
-        console.log("Sync: Successfully loaded product database from API.");
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
+        }
       }
     } catch (err) {
-      console.warn("Sync: Express API offline. Using local static data fallback.", err);
+      console.warn("Sync: API offline. Using current product state fallback.", err);
     }
   };
 
@@ -53,12 +55,18 @@ function App() {
     const handleHashChange = () => {
       setCurrentHash(window.location.hash || "#home");
       window.scrollTo(0, 0);
-      // Re-fetch products on every page change to guarantee fresh updates
       fetchProducts();
     };
 
     window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+
+    // Periodically poll for newly published specifications
+    const interval = setInterval(fetchProducts, 4000);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleNavigate = (hash: string) => {

@@ -191,5 +191,54 @@
     "documentName": "technical_spec_2026.pdf",
     "documentVersion": "v2.0",
     "timestamp": "2026-08-18T14:42:34.968Z"
+  },
+  {
+    "requestId": "upd-GB-100-1787137257",
+    "productId": "GB-100",
+    "changes": {
+      "Power": {
+        "old": null,
+        "new": "4 kW"
+      },
+      "Mount": {
+        "old": null,
+        "new": "Foot Mount"
+      },
+      "Speed": {
+        "old": null,
+        "new": "1440 RPM"
+      },
+      "Ratio": {
+        "old": null,
+        "new": "10:1"
+      },
+      "Torque": {
+        "old": null,
+        "new": "250 Nm"
+      },
+      "Housing / Material": {
+        "old": null,
+        "new": "Cast Iron"
+      },
+      "Lubricant": {
+        "old": null,
+        "new": "Synthetic ISO VG 220"
+      },
+      "Efficiency": {
+        "old": "96%",
+        "new": "95%"
+      },
+      "documentVersion": {
+        "old": "1.0",
+        "new": "v1.0"
+      }
+    },
+    "approvalId": "APP-ED6947D2",
+    "approvedBy": "engineering-lead@company.com",
+    "previousVersion": 1,
+    "newVersion": 2,
+    "documentName": "products_datasheet.csv",
+    "documentVersion": "v1.0",
+    "timestamp": "2026-08-19T11:00:57.740Z"
   }
 ]

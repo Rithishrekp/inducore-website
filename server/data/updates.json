@@ -1117,5 +1117,113 @@
       "previousVersion": 9,
       "newVersion": 10
     }
+  },
+  "upd-GB-100-1787137257": {
+    "status": "applied",
+    "httpStatus": 200,
+    "responseBody": {
+      "success": true,
+      "status": "updated",
+      "message": "Product updated successfully.",
+      "requestId": "upd-GB-100-1787137257",
+      "productId": "GB-100",
+      "modelNumber": "GB-100",
+      "previousVersion": 1,
+      "newVersion": 2,
+      "changedFields": [
+        "power",
+        "Mount",
+        "speed",
+        "Ratio",
+        "Torque",
+        "Housing / Material",
+        "Lubricant",
+        "efficiency",
+        "documentVersion"
+      ],
+      "updatedProduct": {
+        "id": "GB-100",
+        "model": "GB-100",
+        "name": "Coaxial Helical Gearbox H100",
+        "category": "Gearboxes",
+        "description": "Compact in-line helical speed reducer offering smooth torque transmission, low noise levels, and high overload capacity. Pre-filled with synthetic lubricant.",
+        "image": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+        "specifications": {
+          "Gear Ratio": "10:1",
+          "Input Power": "4 kW",
+          "Output Torque": "250 Nm",
+          "Input Speed": "1440 RPM",
+          "Output Speed": "144 RPM",
+          "Efficiency": "95%",
+          "Mounting": "Foot Mount (H/V)",
+          "Weight": "18 kg",
+          "Housing Material": "High-Grade Grey Cast Iron",
+          "Lubrication": "Synthetic ISO VG 220",
+          "Power": "4 kW",
+          "Mount": "Foot Mount",
+          "Speed": "1440 RPM",
+          "Ratio": "10:1",
+          "Torque": "250 Nm",
+          "Housing / Material": "Cast Iron",
+          "Lubricant": "Synthetic ISO VG 220"
+        },
+        "applications": [
+          "Conveyor Belts",
+          "Packaging Machinery",
+          "Stirrers & Mixers",
+          "Material Hoists"
+        ],
+        "compatibleProducts": [
+          "M-100",
+          "M-108",
+          "C-103"
+        ],
+        "relatedProducts": [
+          "GB-101",
+          "GB-102",
+          "GB-104"
+        ],
+        "documents": [
+          {
+            "id": "DOC-GB-100-DS",
+            "productId": "GB-100",
+            "type": "Technical Datasheet",
+            "version": "v1.0",
+            "file": "/documents/GB-100-datasheet.pdf",
+            "title": "Coaxial Helical Gearbox H100 GB-100 - Technical Datasheet",
+            "fileSize": "1.2 MB",
+            "publishDate": "19 Aug 2026"
+          },
+          {
+            "id": "DOC-GB-100-IM",
+            "productId": "GB-100",
+            "type": "Installation Manual",
+            "version": "2.1",
+            "file": "/documents/GB-100-installation-manual.pdf",
+            "title": "Coaxial Helical Gearbox H100 GB-100 - Installation & Maintenance Guide",
+            "fileSize": "3.4 MB",
+            "publishDate": "2025-08-10"
+          },
+          {
+            "id": "DOC-GB-100-PB",
+            "productId": "GB-100",
+            "type": "Product Brochure",
+            "version": "1.1",
+            "file": "/documents/GB-100-brochure.pdf",
+            "title": "Coaxial Helical Gearbox H100 GB-100 - Product Overview Brochure",
+            "fileSize": "2.5 MB",
+            "publishDate": "2025-01-20"
+          }
+        ],
+        "version": 2,
+        "lastUpdated": "19 Aug 2026"
+      }
+    },
+    "timestamp": "2026-08-19T11:00:57.741Z",
+    "details": {
+      "productId": "GB-100",
+      "previousVersion": 1,
+      "newVersion": 2
+    }
   }
 }
