@@ -10,10 +10,13 @@
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:prod": "tsx server/scripts/test_production.ts",
+    "test:local": "tsx server/scripts/test_production.ts http://localhost:5000"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@upstash/redis": "^1.35.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "lucide-react": "^1.31.0",

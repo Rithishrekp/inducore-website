@@ -1,437 +1,799 @@
-import express, { Request, Response } from "express";
+/**
+ * InduCore Integration Server — v3.0
+ *
+ * Persistent store: Upstash Redis (via @upstash/redis)
+ * Required env vars:
+ *   UPSTASH_REDIS_REST_URL   — provided automatically by Vercel when you
+ *   UPSTASH_REDIS_REST_TOKEN   link the Upstash Redis integration
+ *
+ * KV key schema:
+ *   products:ids              → SMEMBERS → Set<productId>
+ *   product:{id}              → JSON Product record (full, persisted)
+ *   update:{requestId}        → UpdateLog (idempotency)
+ *   history:{productId}       → HistoryEntry[] (full change history)
+ *
+ * Hard-fail policy:
+ *   If UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN are not set,
+ *   every storage call returns HTTP 503 with a clear action message.
+ *   There is NO silent fallback to seed data in production.
+ *
+ * Seeding:
+ *   Products are lazy-seeded from server/data/products.json on first access.
+ *   Each product is seeded exactly once into Redis per store lifetime.
+ */
+
+import express, { type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
-import fs from "fs";
 import path from "path";
-import { PRODUCTS } from "../src/data/products";
-import type { Product } from "../src/types";
+import fs from "fs";
+import { Redis } from "@upstash/redis";
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+export interface ProductDocument {
+  id: string;
+  productId: string;
+  type: string;
+  version: string;
+  file: string;
+  title: string;
+  fileSize?: string;
+  publishDate?: string;
+}
+
+export interface Product {
+  id: string;
+  model: string;
+  name: string;
+  category: string;
+  description: string;
+  image: string;
+  specifications: Record<string, string>;
+  applications: string[];
+  compatibleProducts: string[];
+  relatedProducts: string[];
+  documents: ProductDocument[];
+  version: number;
+  lastUpdated: string;
+}
+
+export interface HistoryEntry {
+  requestId: string;
+  previousVersion: number;
+  newVersion: number;
+  changes: Record<string, { old: unknown; new: unknown }>;
+  approvedBy: string;
+  approvalId: string;
+  source: { documentName?: string; documentVersion?: string };
+  timestamp: string;
+}
+
+export interface UpdateLog {
+  status: "applied" | "rejected";
+  httpStatus: number;
+  responseBody: unknown;
+  timestamp: string;
+  details?: Record<string, unknown>;
+}
+
+// ---------------------------------------------------------------------------
+// Redis client — lazy initialisation
+// ---------------------------------------------------------------------------
+
+const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL;
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+const REDIS_CONFIGURED =
+  typeof REDIS_URL === "string" && REDIS_URL.length > 0 &&
+  typeof REDIS_TOKEN === "string" && REDIS_TOKEN.length > 0;
+
+let _redis: Redis | null = null;
+
+function getRedis(): Redis {
+  if (!REDIS_CONFIGURED) {
+    const err = new Error(
+      "Persistent storage is not configured. " +
+      "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set. " +
+      "Install the Upstash Redis integration from the Vercel Marketplace " +
+      "(vercel.com/marketplace) and link it to this project, then redeploy."
+    ) as NodeJS.ErrnoException;
+    err.code = "REDIS_NOT_CONFIGURED";
+    throw err;
+  }
+  if (!_redis) {
+    _redis = new Redis({ url: REDIS_URL!, token: REDIS_TOKEN! });
+  }
+  return _redis;
+}
+
+const IS_VERCEL = !!process.env.VERCEL;
+const IS_LOCAL = !IS_VERCEL;
+
+// ---------------------------------------------------------------------------
+// Seed data loader — reads server/data/products.json at runtime
+// ---------------------------------------------------------------------------
+
+let _seedProducts: Product[] | null = null;
+
+function getSeedProducts(): Product[] {
+  if (_seedProducts) return _seedProducts;
+  const jsonPath = path.join(process.cwd(), "server", "data", "products.json");
+  if (!fs.existsSync(jsonPath)) {
+    throw new Error(`Seed data file not found: ${jsonPath}`);
+  }
+  const raw = fs.readFileSync(jsonPath, "utf-8");
+  const parsed: Product[] = JSON.parse(raw);
+  if (!Array.isArray(parsed) || parsed.length === 0) {
+    throw new Error("Seed data file is empty or malformed.");
+  }
+  _seedProducts = parsed.map((p) => ({
+    ...p,
+    version: typeof p.version === "number" ? p.version : 1,
+    lastUpdated: p.lastUpdated || "18 Aug 2026",
+  }));
+  return _seedProducts;
+}
+
+// ---------------------------------------------------------------------------
+// Redis accessor functions
+// ---------------------------------------------------------------------------
+
+async function seedProductToRedis(redis: Redis, product: Product): Promise<void> {
+  await redis.set(`product:${product.id}`, JSON.stringify(product));
+  await redis.sadd("products:ids", product.id);
+}
+
+async function ensureAllProductsSeeded(redis: Redis): Promise<void> {
+  const existing = await redis.smembers("products:ids") as string[];
+  const existingSet = new Set(existing);
+  const seed = getSeedProducts();
+  const toSeed = seed.filter((p) => !existingSet.has(p.id));
+  if (toSeed.length > 0) {
+    await Promise.all(toSeed.map((p) => seedProductToRedis(redis, p)));
+    console.log(`[InduCore] Seeded ${toSeed.length} products to Redis.`);
+  }
+}
+
+async function getAllProducts(redis: Redis): Promise<Product[]> {
+  await ensureAllProductsSeeded(redis);
+  const ids = await redis.smembers("products:ids") as string[];
+  if (!ids || ids.length === 0) return [];
+  const records = await Promise.all(
+    ids.map(async (id) => {
+      const raw = await redis.get(`product:${id}`);
+      if (!raw) return null;
+      return typeof raw === "string" ? JSON.parse(raw) as Product : raw as Product;
+    })
+  );
+  return records.filter((p): p is Product => p !== null);
+}
+
+async function getProductFromRedis(
+  redis: Redis,
+  productId: string
+): Promise<Product | null> {
+  const cleanId = productId.trim().toUpperCase();
+
+  // 1. Direct key lookup (O(1))
+  const raw = await redis.get(`product:${cleanId}`);
+  if (raw) {
+    return typeof raw === "string" ? JSON.parse(raw) as Product : raw as Product;
+  }
+
+  // 2. Try seed data (in case product exists but hasn't been seeded yet)
+  const seed = getSeedProducts();
+  const seedMatch = seed.find(
+    (p) => p.id.toUpperCase() === cleanId || p.model.toUpperCase() === cleanId
+  );
+  if (seedMatch) {
+    await seedProductToRedis(redis, seedMatch);
+    return seedMatch;
+  }
+
+  // 3. Scan KV index for model match (expensive, last resort)
+  const ids = await redis.smembers("products:ids") as string[];
+  for (const id of ids) {
+    const candidateRaw = await redis.get(`product:${id}`);
+    if (!candidateRaw) continue;
+    const candidate: Product = typeof candidateRaw === "string"
+      ? JSON.parse(candidateRaw)
+      : candidateRaw as Product;
+    if (
+      candidate.id.toUpperCase() === cleanId ||
+      candidate.model.toUpperCase() === cleanId
+    ) {
+      return candidate;
+    }
+  }
+  return null;
+}
+
+async function saveProductToRedis(redis: Redis, product: Product): Promise<void> {
+  await redis.set(`product:${product.id}`, JSON.stringify(product));
+  await redis.sadd("products:ids", product.id);
+}
+
+async function getUpdateLog(redis: Redis, requestId: string): Promise<UpdateLog | null> {
+  const raw = await redis.get(`update:${requestId}`);
+  if (!raw) return null;
+  return typeof raw === "string" ? JSON.parse(raw) as UpdateLog : raw as UpdateLog;
+}
+
+async function saveUpdateLog(
+  redis: Redis,
+  requestId: string,
+  log: UpdateLog
+): Promise<void> {
+  await redis.set(`update:${requestId}`, JSON.stringify(log));
+}
+
+async function appendHistory(
+  redis: Redis,
+  productId: string,
+  entry: HistoryEntry
+): Promise<void> {
+  const raw = await redis.get(`history:${productId}`);
+  const existing: HistoryEntry[] = raw
+    ? (typeof raw === "string" ? JSON.parse(raw) : raw as HistoryEntry[])
+    : [];
+  existing.push(entry);
+  await redis.set(`history:${productId}`, JSON.stringify(existing));
+}
+
+async function getHistory(redis: Redis, productId: string): Promise<HistoryEntry[]> {
+  const raw = await redis.get(`history:${productId}`);
+  if (!raw) return [];
+  return typeof raw === "string" ? JSON.parse(raw) : raw as HistoryEntry[];
+}
+
+// ---------------------------------------------------------------------------
+// Supplier-only field guard — never published to the customer catalog
+// ---------------------------------------------------------------------------
+
+const SUPPLIER_ONLY_NORMALISED = new Set([
+  "supplierid", "suppliername", "unitprice", "stockqty",
+  "deliverydays", "moq", "paymentterms", "incoterms",
+  "supplierstatus", "purchaseprice", "marginpercent", "leadtime",
+]);
+
+function isSupplierOnlyField(key: string): boolean {
+  return SUPPLIER_ONLY_NORMALISED.has(key.toLowerCase().replace(/[\s_-]/g, ""));
+}
+
+// ---------------------------------------------------------------------------
+// Spec key resolver — maps incoming field name to existing spec key
+// ---------------------------------------------------------------------------
+
+const SPEC_ALIASES: Record<string, string> = {
+  ratio: "Gear Ratio",
+  gearratio: "Gear Ratio",
+  flowrate: "Flow Rate",
+  inputpower: "Input Power",
+  outputtorque: "Output Torque",
+  inputspeed: "Input Speed",
+  outputspeed: "Output Speed",
+  housingmaterial: "Housing Material",
+  valvetype: "Valve Type",
+  nominaldiameter: "Nominal Diameter",
+  pressurerating: "Pressure Rating",
+  maximumpressure: "Maximum Pressure",
+  airflow: "Air Flow",
+  tankcapacity: "Tank Capacity",
+  noiselevel: "Noise Level",
+  noiselvl: "Noise Level",
+  powerfactor: "Power Factor",
+};
+
+function resolveSpecKey(incomingKey: string, existingSpecKeys: string[]): string {
+  const normalise = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const normIncoming = normalise(incomingKey);
+
+  // 1. Exact case-insensitive match against existing keys
+  const exact = existingSpecKeys.find(
+    (k) => k.toLowerCase() === incomingKey.toLowerCase()
+  );
+  if (exact) return exact;
+
+  // 2. Normalised (strip non-alphanum) match against existing keys
+  const fuzzy = existingSpecKeys.find((k) => normalise(k) === normIncoming);
+  if (fuzzy) return fuzzy;
+
+  // 3. Known alias
+  if (SPEC_ALIASES[normIncoming]) return SPEC_ALIASES[normIncoming];
+
+  // 4. Create new key with proper capitalisation
+  return incomingKey.charAt(0).toUpperCase() + incomingKey.slice(1);
+}
+
+// ---------------------------------------------------------------------------
+// Express app
+// ---------------------------------------------------------------------------
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Resolve DB file paths dynamically to support Vercel serverless functions (writeable /tmp)
-const IS_VERCEL = !!process.env.VERCEL;
-const BASE_DATA_DIR = IS_VERCEL ? "/tmp" : path.join(process.cwd(), "server/data");
-
-const PRODUCTS_DB_PATH = path.join(BASE_DATA_DIR, "products.json");
-const AUDITS_DB_PATH = path.join(BASE_DATA_DIR, "audits.json");
-const UPDATES_DB_PATH = path.join(BASE_DATA_DIR, "updates.json");
-
-// In-Memory fallback store to guarantee 100% serverless availability and zero 500 errors
-let memoryProducts: Product[] = PRODUCTS.map((p) => ({
-  ...p,
-  version: p.version || 1,
-  lastUpdated: p.lastUpdated || "18 Aug 2026",
-}));
-
-let memoryAudits: any[] = [];
-let memoryUpdates: { [requestId: string]: any } = {};
-
-// Ensure JSON database files are initialized
-try {
-  if (!fs.existsSync(BASE_DATA_DIR)) {
-    fs.mkdirSync(BASE_DATA_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(PRODUCTS_DB_PATH)) {
-    fs.writeFileSync(PRODUCTS_DB_PATH, JSON.stringify(memoryProducts, null, 2), "utf-8");
-  } else {
-    const diskData = JSON.parse(fs.readFileSync(PRODUCTS_DB_PATH, "utf-8"));
-    if (Array.isArray(diskData) && diskData.length > 0) {
-      memoryProducts = diskData;
-    }
-  }
-  if (!fs.existsSync(AUDITS_DB_PATH)) {
-    fs.writeFileSync(AUDITS_DB_PATH, JSON.stringify([], null, 2), "utf-8");
-  }
-  if (!fs.existsSync(UPDATES_DB_PATH)) {
-    fs.writeFileSync(UPDATES_DB_PATH, JSON.stringify({}, null, 2), "utf-8");
-  }
-} catch (err) {
-  console.warn("Storage init warning (operating in memory mode):", err);
-}
-
-// Middleware
-app.use(express.json());
-
-// Enable permissive CORS for all client interfaces and API integrations
+app.use(express.json({ limit: "2mb" }));
 app.use(
   cors({
     origin: true,
     credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Safe storage accessors
-const getProductsData = (): Product[] => {
-  try {
-    if (fs.existsSync(PRODUCTS_DB_PATH)) {
-      const parsed = JSON.parse(fs.readFileSync(PRODUCTS_DB_PATH, "utf-8"));
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        memoryProducts = parsed;
-        return parsed;
-      }
-    }
-  } catch (err) {
-    console.warn("Error reading products db file, falling back to memory:", err);
-  }
-  return memoryProducts;
-};
+function noCache(res: Response): void {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  res.setHeader("Surrogate-Control", "no-store");
+}
 
-const saveProductsData = (products: Product[]): boolean => {
-  memoryProducts = products;
-  try {
-    fs.writeFileSync(PRODUCTS_DB_PATH, JSON.stringify(products, null, 2), "utf-8");
-    return true;
-  } catch (err) {
-    console.warn("Error writing products db file (memory updated):", err);
-    return true;
-  }
-};
-
-const getAuditsData = (): any[] => {
-  try {
-    if (fs.existsSync(AUDITS_DB_PATH)) {
-      const parsed = JSON.parse(fs.readFileSync(AUDITS_DB_PATH, "utf-8"));
-      if (Array.isArray(parsed)) {
-        memoryAudits = parsed;
-        return parsed;
-      }
-    }
-  } catch (err) {
-    console.warn("Error reading audits db file:", err);
-  }
-  return memoryAudits;
-};
-
-const saveAuditsData = (audits: any[]): boolean => {
-  memoryAudits = audits;
-  try {
-    fs.writeFileSync(AUDITS_DB_PATH, JSON.stringify(audits, null, 2), "utf-8");
-    return true;
-  } catch (err) {
-    console.warn("Error writing audits db file:", err);
-    return true;
-  }
-};
-
-const getUpdatesData = (): { [requestId: string]: any } => {
-  try {
-    if (fs.existsSync(UPDATES_DB_PATH)) {
-      const parsed = JSON.parse(fs.readFileSync(UPDATES_DB_PATH, "utf-8"));
-      if (parsed && typeof parsed === "object") {
-        memoryUpdates = parsed;
-        return parsed;
-      }
-    }
-  } catch (err) {
-    console.warn("Error reading updates db file:", err);
-  }
-  return memoryUpdates;
-};
-
-const saveUpdatesData = (updates: { [requestId: string]: any }): boolean => {
-  memoryUpdates = updates;
-  try {
-    fs.writeFileSync(UPDATES_DB_PATH, JSON.stringify(updates, null, 2), "utf-8");
-    return true;
-  } catch (err) {
-    console.warn("Error writing updates db file:", err);
-    return true;
-  }
-};
-
-// 1. Health Check API
-app.get("/api/integration/health", (req: Request, res: Response) => {
-  res.json({
-    status: "ok",
-    service: "InduCore E-commerce API",
-    version: "2.0",
-    totalProducts: memoryProducts.length,
-  });
-});
-
-// 2. Serves current products database to the frontend React application
-app.get("/api/products", (req: Request, res: Response) => {
-  const products = getProductsData();
-  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  res.json(products);
-});
-
-// 2b. Serves single product by ID / SKU / Model
-app.get("/api/products/:productId", (req: Request, res: Response) => {
-  const { productId } = req.params;
-  const products = getProductsData();
-  const cleanId = (productId || "").toUpperCase();
-  const product = products.find(
-    (p) => p.id.toUpperCase() === cleanId || p.model.toUpperCase() === cleanId
-  );
-  if (!product) {
-    return res.status(404).json({ success: false, message: `Product ${productId} not found.` });
-  }
-  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  res.json(product);
-});
-
-// 2c. Storefront API alias for compatibility
-app.get(["/api/storefront/:productId", "/api/ecommerce/storefront/:productId"], (req: Request, res: Response) => {
-  const { productId } = req.params;
-  const products = getProductsData();
-  const cleanId = (productId || "").toUpperCase();
-  const product = products.find(
-    (p) => p.id.toUpperCase() === cleanId || p.model.toUpperCase() === cleanId
-  );
-  if (!product) {
-    return res.status(404).json({ success: false, message: `Product ${productId} not found.` });
-  }
-  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  res.json({
-    product_code: product.id,
-    name: product.name,
-    category: product.category,
-    version: `v${product.version || 1}.0`,
-    specifications: product.specifications,
-    last_synced_at: product.lastUpdated,
-  });
-});
-
-// 3. Update Status API
-app.get("/api/integration/product-update/status/:requestId", (req: Request, res: Response) => {
-  const { requestId } = req.params;
-  const updatesLog = getUpdatesData();
-  
-  if (!updatesLog[requestId]) {
-    return res.status(404).json({
+function handleStorageError(err: unknown, res: Response): Response {
+  const error = err as NodeJS.ErrnoException;
+  if (error.code === "REDIS_NOT_CONFIGURED") {
+    return res.status(503).json({
       success: false,
-      status: "not_found",
-      message: `Request ID ${requestId} does not exist.`,
+      status: "storage_not_configured",
+      message: error.message,
+      action:
+        "1. Go to https://vercel.com/marketplace and install Upstash Redis. " +
+        "2. Link the store to the inducore-website project. " +
+        "3. Redeploy — Vercel will inject UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN automatically.",
+    });
+  }
+  console.error("[InduCore] Storage error:", err);
+  return res.status(500).json({
+    success: false,
+    status: "storage_error",
+    message: `Storage operation failed: ${error.message || String(err)}`,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Routes
+// ---------------------------------------------------------------------------
+
+// 1. Health check
+app.get("/api/integration/health", async (_req: Request, res: Response) => {
+  noCache(res);
+  if (!REDIS_CONFIGURED) {
+    return res.status(503).json({
+      status: "degraded",
+      service: "InduCore E-commerce API",
+      version: "3.0",
+      storage: "NOT_CONFIGURED",
+      message:
+        "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are not set. " +
+        "Install Upstash Redis from the Vercel Marketplace and link to this project.",
+    });
+  }
+  try {
+    const redis = getRedis();
+    const ids = await redis.smembers("products:ids") as string[];
+    return res.json({
+      status: "ok",
+      service: "InduCore E-commerce API",
+      version: "3.0",
+      storage: "UPSTASH_REDIS_CONNECTED",
+      totalProducts: ids.length,
+    });
+  } catch (err) {
+    return res.status(503).json({
+      status: "degraded",
+      service: "InduCore E-commerce API",
+      version: "3.0",
+      storage: "REDIS_ERROR",
+      message: `Redis connectivity error: ${(err as Error).message}`,
+    });
+  }
+});
+
+// 2. GET all products
+app.get("/api/products", async (_req: Request, res: Response) => {
+  noCache(res);
+  try {
+    const redis = getRedis();
+    const products = await getAllProducts(redis);
+    return res.json(products);
+  } catch (err) {
+    return handleStorageError(err, res);
+  }
+});
+
+// 2b. GET single product by ID or model
+app.get("/api/products/:productId", async (req: Request, res: Response) => {
+  noCache(res);
+  const { productId } = req.params;
+  if (!productId?.trim()) {
+    return res.status(400).json({ success: false, message: "Missing productId." });
+  }
+  try {
+    const redis = getRedis();
+    const product = await getProductFromRedis(redis, productId);
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: `Product '${productId}' not found in the persistent catalog.`,
+      });
+    }
+    return res.json(product);
+  } catch (err) {
+    return handleStorageError(err, res);
+  }
+});
+
+// 2c. Storefront alias
+app.get(
+  ["/api/storefront/:productId", "/api/ecommerce/storefront/:productId"],
+  async (req: Request, res: Response) => {
+    noCache(res);
+    const { productId } = req.params;
+    try {
+      const redis = getRedis();
+      const product = await getProductFromRedis(redis, productId);
+      if (!product) {
+        return res.status(404).json({ success: false, message: `Product '${productId}' not found.` });
+      }
+      return res.json({
+        product_code: product.id,
+        name: product.name,
+        category: product.category,
+        version: `v${product.version}.0`,
+        specifications: product.specifications,
+        last_synced_at: product.lastUpdated,
+      });
+    } catch (err) {
+      return handleStorageError(err, res);
+    }
+  }
+);
+
+// 3. GET change history for a product
+app.get("/api/products/:productId/history", async (req: Request, res: Response) => {
+  noCache(res);
+  const { productId } = req.params;
+  try {
+    const redis = getRedis();
+    const history = await getHistory(redis, productId.toUpperCase());
+    return res.json({ productId: productId.toUpperCase(), history });
+  } catch (err) {
+    return handleStorageError(err, res);
+  }
+});
+
+// 4. GET update request status
+app.get(
+  "/api/integration/product-update/status/:requestId",
+  async (req: Request, res: Response) => {
+    noCache(res);
+    const { requestId } = req.params;
+    try {
+      const redis = getRedis();
+      const log = await getUpdateLog(redis, requestId);
+      if (!log) {
+        return res.status(404).json({
+          success: false,
+          status: "not_found",
+          message: `Request ID '${requestId}' does not exist.`,
+        });
+      }
+      return res.json({ success: true, requestId, status: log.status, details: log.details || null });
+    } catch (err) {
+      return handleStorageError(err, res);
+    }
+  }
+);
+
+// 5. POST product-update — the main integration endpoint
+app.post("/api/integration/product-update", async (req: Request, res: Response) => {
+  noCache(res);
+
+  // express.json() has already parsed the body
+  const payload = (req.body || {}) as {
+    requestId?: string;
+    productId?: string;
+    modelNumber?: string;
+    expectedVersion?: number;
+    newVersion?: number;
+    updates?: Record<string, unknown>;
+    source?: { documentName?: string; documentVersion?: string };
+    approval?: { approved?: boolean; approvedBy?: string; approvalId?: string };
+  };
+
+  const { requestId, productId, modelNumber, expectedVersion, newVersion, updates, source, approval } = payload;
+
+  // ── requestId is always required ─────────────────────────────────────────
+  if (!requestId?.trim()) {
+    return res.status(400).json({
+      success: false,
+      status: "invalid_request",
+      message: "Missing required field: requestId.",
     });
   }
 
-  res.json({
-    success: true,
-    requestId,
-    status: updatesLog[requestId].status,
-    details: updatesLog[requestId].details || null,
-  });
-});
-
-// 4. Product Update API (POST /api/integration/product-update)
-app.post("/api/integration/product-update", (req: Request, res: Response) => {
-  const payload = req.body || {};
-  const {
-    requestId,
-    productId,
-    modelNumber,
-    expectedVersion,
-    newVersion,
-    updates,
-    source,
-    approval,
-  } = payload;
-
-  // Basic validation of required payload properties
-  if (!requestId) {
-    return res.status(400).json({ success: false, message: "Missing required field: requestId." });
-  }
-
-  // Read current logs for idempotency
-  const updatesLog = getUpdatesData();
-
-  // Idempotency: If request ID already processed, return cached response
-  if (updatesLog[requestId]) {
-    console.log(`Idempotency check passed for request: ${requestId}`);
-    const cached = updatesLog[requestId];
-    return res.status(cached.httpStatus || 200).json(cached.responseBody);
-  }
-
-  // Helper to log rejection status in updates database and respond
-  const rejectRequest = (status: string, message: string, httpCode: number, additionalData = {}) => {
-    const responseBody = {
+  // ── Fail immediately if Redis is not configured ───────────────────────────
+  if (!REDIS_CONFIGURED) {
+    return res.status(503).json({
       success: false,
-      status,
-      message,
-      ...additionalData,
-    };
-    updatesLog[requestId] = {
-      status: "rejected",
-      httpStatus: httpCode,
-      responseBody,
-      timestamp: new Date().toISOString(),
-    };
-    saveUpdatesData(updatesLog);
-    return res.status(httpCode).json(responseBody);
+      status: "storage_not_configured",
+      message:
+        "Persistent storage is not configured. " +
+        "Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.",
+      action:
+        "1. Go to https://vercel.com/marketplace → install Upstash Redis. " +
+        "2. Link to the inducore-website Vercel project. " +
+        "3. Redeploy the project (env vars are auto-injected).",
+    });
+  }
+
+  let redis: Redis;
+  try {
+    redis = getRedis();
+  } catch (err) {
+    return handleStorageError(err, res);
+  }
+
+  // ── Idempotency check ────────────────────────────────────────────────────
+  try {
+    const cached = await getUpdateLog(redis, requestId);
+    if (cached) {
+      return res.status(cached.httpStatus || 200).json(cached.responseBody);
+    }
+  } catch (err) {
+    return handleStorageError(err, res);
+  }
+
+  // ── Helper: reject and record ────────────────────────────────────────────
+  const rejectRequest = async (
+    status: string,
+    message: string,
+    httpCode: number,
+    additional: Record<string, unknown> = {}
+  ): Promise<Response> => {
+    const body = { success: false, status, message, ...additional };
+    try {
+      await saveUpdateLog(redis, requestId, {
+        status: "rejected",
+        httpStatus: httpCode,
+        responseBody: body,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (_) { /* best-effort */ }
+    return res.status(httpCode).json(body);
   };
 
-  // Human approval check
+  // ── Approval ─────────────────────────────────────────────────────────────
   if (!approval || approval.approved !== true) {
     return rejectRequest(
       "approval_required",
-      "Human approval is required before product data can be updated.",
+      "Human approval is required. Set approval.approved = true.",
       403
     );
   }
 
-  // Load current products
-  const products = getProductsData();
-
-  // Product Matching
-  let matchedProduct: any = null;
-  const targetId = (productId || "").toUpperCase();
-  const targetModel = (modelNumber || "").toUpperCase();
-
-  if (targetId) {
-    matchedProduct = products.find((p) => p.id.toUpperCase() === targetId);
+  // ── Updates object ───────────────────────────────────────────────────────
+  if (
+    !updates ||
+    typeof updates !== "object" ||
+    Array.isArray(updates) ||
+    Object.keys(updates).length === 0
+  ) {
+    return rejectRequest(
+      "invalid_updates",
+      "The 'updates' field must be a non-empty JSON object mapping field names to new values.",
+      400
+    );
   }
-  if (!matchedProduct && targetModel) {
-    matchedProduct = products.find((p) => p.model.toUpperCase() === targetModel);
+
+  // ── Reject supplier-only fields before touching the DB ───────────────────
+  const supplierFieldsFound = Object.keys(updates).filter(isSupplierOnlyField);
+  if (supplierFieldsFound.length > 0) {
+    return rejectRequest(
+      "supplier_fields_rejected",
+      `These fields are supplier-only and cannot be published to the customer catalog: ${supplierFieldsFound.join(", ")}.`,
+      400,
+      { rejectedFields: supplierFieldsFound }
+    );
+  }
+
+  // ── Load product from Redis ──────────────────────────────────────────────
+  let matchedProduct: Product | null = null;
+  try {
+    if (productId?.trim()) {
+      matchedProduct = await getProductFromRedis(redis, productId);
+    }
+    if (!matchedProduct && modelNumber?.trim()) {
+      matchedProduct = await getProductFromRedis(redis, modelNumber);
+    }
+  } catch (err) {
+    return handleStorageError(err, res);
   }
 
   if (!matchedProduct) {
     return rejectRequest(
       "product_not_found",
-      `Product could not be identified using ID: '${productId || ""}' or Model: '${modelNumber || ""}'.`,
+      `No product found with ID '${productId || ""}' or model '${modelNumber || ""}' in the persistent catalog.`,
       404
     );
   }
 
-  // Version Safety
-  const currentVersion = matchedProduct.version || 1;
-  if (expectedVersion !== undefined && expectedVersion !== currentVersion) {
+  // ── Version safety ───────────────────────────────────────────────────────
+  const currentVersion = matchedProduct.version;
+  if (
+    expectedVersion !== undefined &&
+    expectedVersion !== null &&
+    typeof expectedVersion === "number" &&
+    expectedVersion !== currentVersion
+  ) {
     return rejectRequest(
       "version_conflict",
-      `Version mismatch. Expected v${expectedVersion}, but product is currently at v${currentVersion}.`,
+      `Version mismatch: expected v${expectedVersion}, but product is currently at v${currentVersion}. ` +
+        "Fetch the latest product data before applying this update.",
       409,
       { currentVersion }
     );
   }
 
-  // Validate updates
-  if (!updates || typeof updates !== "object") {
-    return rejectRequest("invalid_field", "The 'updates' field must be a valid JSON object.", 400);
-  }
-
-  const changes: { [key: string]: { old: any; new: any } } = {};
+  // ── Apply updates to a working copy ─────────────────────────────────────
+  const TOP_LEVEL_FIELDS: Array<keyof Product> = ["name", "description", "category", "image"];
+  const changes: Record<string, { old: unknown; new: unknown }> = {};
   const changedFields: string[] = [];
 
-  const updatedProduct = { ...matchedProduct };
-  if (!updatedProduct.specifications) {
-    updatedProduct.specifications = {};
-  }
-
-  const formatTimestamp = (date: Date) => {
-    const options: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric" };
-    return date.toLocaleDateString("en-GB", options);
+  const updatedProduct: Product = {
+    ...matchedProduct,
+    specifications: { ...matchedProduct.specifications },
+    documents: matchedProduct.documents ? matchedProduct.documents.map((d) => ({ ...d })) : [],
   };
 
-  // Apply approved changed fields
-  for (const [key, value] of Object.entries(updates)) {
-    if (value === undefined || value === null) continue;
-    const strValue = String(value);
+  for (const [rawKey, rawValue] of Object.entries(updates)) {
+    if (rawValue === undefined || rawValue === null) continue;
+    const strValue = String(rawValue);
 
-    const topLevelKeys = ["name", "description", "category", "image"];
-    const matchedTopKey = topLevelKeys.find((k) => k.toLowerCase() === key.toLowerCase());
+    // Top-level field?
+    const topKey = TOP_LEVEL_FIELDS.find(
+      (k) => k.toLowerCase() === rawKey.toLowerCase()
+    );
+    if (topKey) {
+      const oldVal = updatedProduct[topKey] as string;
+      if (oldVal !== strValue) {
+        changes[topKey] = { old: oldVal, new: strValue };
+        changedFields.push(topKey as string);
+        (updatedProduct as Record<string, unknown>)[topKey] = strValue;
+      }
+      continue;
+    }
 
-    if (matchedTopKey) {
-      const oldValue = updatedProduct[matchedTopKey];
-      if (oldValue !== strValue) {
-        changes[matchedTopKey] = { old: oldValue, new: strValue };
-        changedFields.push(matchedTopKey);
-        updatedProduct[matchedTopKey] = strValue;
-      }
-    } else {
-      const specKeys = Object.keys(updatedProduct.specifications);
-      let matchedSpecKey = specKeys.find((k) => k.toLowerCase() === key.toLowerCase() || k.toLowerCase().replace(/[^a-z0-9]/g, "") === key.toLowerCase().replace(/[^a-z0-9]/g, ""));
-      
-      if (!matchedSpecKey) {
-        if (key.toLowerCase() === "ratio" || key.toLowerCase() === "gearratio") {
-          matchedSpecKey = "Gear Ratio";
-        } else {
-          matchedSpecKey = key.charAt(0).toUpperCase() + key.slice(1);
-        }
-      }
-
-      const oldValue = updatedProduct.specifications[matchedSpecKey];
-      if (oldValue !== strValue) {
-        changes[matchedSpecKey] = { old: oldValue || null, new: strValue };
-        changedFields.push(matchedSpecKey);
-        updatedProduct.specifications[matchedSpecKey] = strValue;
-      }
+    // Spec field
+    const resolvedKey = resolveSpecKey(rawKey, Object.keys(updatedProduct.specifications));
+    const oldSpecVal = updatedProduct.specifications[resolvedKey];
+    if (oldSpecVal !== strValue) {
+      changes[resolvedKey] = { old: oldSpecVal ?? null, new: strValue };
+      changedFields.push(resolvedKey);
+      updatedProduct.specifications[resolvedKey] = strValue;
     }
   }
 
-  // Update version
-  const targetNewVersion = newVersion || (currentVersion + 1);
+  // ── Version + timestamp ──────────────────────────────────────────────────
+  const targetNewVersion = typeof newVersion === "number" && newVersion > currentVersion
+    ? newVersion
+    : currentVersion + 1;
   updatedProduct.version = targetNewVersion;
-  updatedProduct.lastUpdated = formatTimestamp(new Date());
+  updatedProduct.lastUpdated = new Date().toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 
-  // Save updated product
-  const updatedProductsList = products.map((p) =>
-    p.id === updatedProduct.id ? updatedProduct : p
-  );
-  saveProductsData(updatedProductsList);
+  // ── Update Technical Datasheet version if source.documentVersion provided ─
+  if (source?.documentVersion) {
+    const dsIdx = updatedProduct.documents.findIndex(
+      (d) => d.type === "Technical Datasheet"
+    );
+    if (dsIdx !== -1) {
+      const oldDocVersion = matchedProduct.documents[dsIdx]?.version ?? null;
+      updatedProduct.documents[dsIdx] = {
+        ...updatedProduct.documents[dsIdx],
+        version: source.documentVersion,
+        publishDate: updatedProduct.lastUpdated,
+      };
+      changes["documentVersion"] = { old: oldDocVersion, new: source.documentVersion };
+      changedFields.push("documentVersion");
+    }
+  }
 
-  // Record Audit
-  const auditRecord = {
+  // ── Persist to Redis (product + history) ─────────────────────────────────
+  const historyEntry: HistoryEntry = {
     requestId,
-    productId: updatedProduct.id,
-    changes,
-    approvalId: approval.approvalId || "UNKNOWN_APP",
-    approvedBy: approval.approvedBy || "UNKNOWN_ADMIN",
     previousVersion: currentVersion,
     newVersion: targetNewVersion,
-    documentName: source?.documentName || "N/A",
-    documentVersion: source?.documentVersion || "N/A",
+    changes,
+    approvedBy: approval.approvedBy || "UNKNOWN",
+    approvalId: approval.approvalId || "UNKNOWN",
+    source: {
+      documentName: source?.documentName,
+      documentVersion: source?.documentVersion,
+    },
     timestamp: new Date().toISOString(),
   };
 
-  const audits = getAuditsData();
-  audits.push(auditRecord);
-  saveAuditsData(audits);
+  try {
+    await saveProductToRedis(redis, updatedProduct);
+    await appendHistory(redis, updatedProduct.id, historyEntry);
+  } catch (err) {
+    return handleStorageError(err, res);
+  }
 
+  // ── Build success response and cache it ──────────────────────────────────
   const successResponse = {
     success: true,
     status: "updated",
-    message: `Product ${updatedProduct.id} specifications updated successfully.`,
+    message: `Product ${updatedProduct.id} (${updatedProduct.name}) updated to v${targetNewVersion}.`,
     requestId,
     productId: updatedProduct.id,
     modelNumber: updatedProduct.model,
+    category: updatedProduct.category,
     previousVersion: currentVersion,
     newVersion: targetNewVersion,
     changedFields,
+    changes,
     updatedProduct,
   };
 
-  updatesLog[requestId] = {
-    status: "applied",
-    httpStatus: 200,
-    responseBody: successResponse,
-    timestamp: new Date().toISOString(),
-    details: {
-      productId: updatedProduct.id,
-      previousVersion: currentVersion,
-      newVersion: targetNewVersion,
-    },
-  };
-  saveUpdatesData(updatesLog);
+  try {
+    await saveUpdateLog(redis, requestId, {
+      status: "applied",
+      httpStatus: 200,
+      responseBody: successResponse,
+      timestamp: new Date().toISOString(),
+      details: {
+        productId: updatedProduct.id,
+        category: updatedProduct.category,
+        previousVersion: currentVersion,
+        newVersion: targetNewVersion,
+        changedFields,
+      },
+    });
+  } catch (err) {
+    console.warn("[InduCore] Failed to cache update log (idempotency risk):", err);
+  }
 
-  console.log(`Successfully updated ${updatedProduct.id} to version ${targetNewVersion}`);
-  res.json(successResponse);
+  console.log(
+    `[InduCore] ${updatedProduct.id} (${updatedProduct.category}) ` +
+    `v${currentVersion} → v${targetNewVersion} | ` +
+    `changed: ${changedFields.join(", ")}`
+  );
+
+  return res.json(successResponse);
 });
 
-// Serve frontend static files
-const distPath = path.join(process.cwd(), "dist");
-if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
-  app.use((req: Request, res: Response, next) => {
-    if (req.path.startsWith("/api")) {
-      return next();
-    }
-    res.sendFile(path.join(distPath, "index.html"));
-  });
+// ---------------------------------------------------------------------------
+// Static frontend (local dev only)
+// ---------------------------------------------------------------------------
+
+if (IS_LOCAL) {
+  const distPath = path.join(process.cwd(), "dist");
+  if (fs.existsSync(distPath)) {
+    app.use(express.static(distPath));
+    app.use((_req: Request, res: Response, _next: NextFunction) => {
+      if (_req.path.startsWith("/api")) return _next();
+      res.sendFile(path.join(distPath, "index.html"));
+    });
+  }
 }
 
-if (!IS_VERCEL) {
+if (IS_LOCAL) {
   app.listen(PORT, () => {
-    console.log(`InduCore Integration Server running on http://localhost:${PORT}`);
+    console.log(`InduCore API → http://localhost:${PORT}`);
+    if (!REDIS_CONFIGURED) {
+      console.warn(
+        "⚠  Redis not configured. " +
+        "Set UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN to enable persistence. " +
+        "All storage calls will return HTTP 503 until configured."
+      );
+    }
   });
 }
 
