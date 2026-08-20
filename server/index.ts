@@ -82,12 +82,23 @@ export interface UpdateLog {
 // Redis client — lazy initialisation
 // ---------------------------------------------------------------------------
 
-const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL;
-const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const REDIS_URL =
+  process.env.UPSTASH_REDIS_REST_URL ||
+  process.env.KV_REST_API_URL ||
+  process.env.STORAGE_REST_API_URL ||
+  process.env.REDIS_REST_API_URL ||
+  process.env.UPSTASH_REDIS_URL;
+
+const REDIS_TOKEN =
+  process.env.UPSTASH_REDIS_REST_TOKEN ||
+  process.env.KV_REST_API_TOKEN ||
+  process.env.STORAGE_REST_API_TOKEN ||
+  process.env.REDIS_REST_API_TOKEN ||
+  process.env.UPSTASH_REDIS_TOKEN;
 
 const REDIS_CONFIGURED =
-  typeof REDIS_URL === "string" && REDIS_URL.length > 0 &&
-  typeof REDIS_TOKEN === "string" && REDIS_TOKEN.length > 0;
+  typeof REDIS_URL === "string" && REDIS_URL.trim().length > 0 &&
+  typeof REDIS_TOKEN === "string" && REDIS_TOKEN.trim().length > 0;
 
 let _redis: Redis | null = null;
 
@@ -95,7 +106,7 @@ function getRedis(): Redis {
   if (!REDIS_CONFIGURED) {
     const err = new Error(
       "Persistent storage is not configured. " +
-      "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set. " +
+      "UPSTASH_REDIS_REST_URL / KV_REST_API_URL and UPSTASH_REDIS_REST_TOKEN / KV_REST_API_TOKEN must be set. " +
       "Install the Upstash Redis integration from the Vercel Marketplace " +
       "(vercel.com/marketplace) and link it to this project, then redeploy."
     ) as NodeJS.ErrnoException;
@@ -103,7 +114,7 @@ function getRedis(): Redis {
     throw err;
   }
   if (!_redis) {
-    _redis = new Redis({ url: REDIS_URL!, token: REDIS_TOKEN! });
+    _redis = new Redis({ url: REDIS_URL!.trim(), token: REDIS_TOKEN!.trim() });
   }
   return _redis;
 }
