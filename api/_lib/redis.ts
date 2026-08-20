@@ -59,27 +59,34 @@ let _seedProducts: Product[] | null = null;
 export function getSeedProducts(): Product[] {
   if (_seedProducts) return _seedProducts;
 
-  // Resolve path — works both locally and on Vercel (/var/task)
-  const jsonPath = path.join(process.cwd(), "server", "data", "products.json");
+  const candidates = [
+    path.join(process.cwd(), "server", "data", "products.json"),
+    path.join(process.cwd(), "api", "_lib", "products.json"),
+    path.join(process.cwd(), "products.json"),
+  ];
 
-  if (!fs.existsSync(jsonPath)) {
-    throw new Error(
-      `Seed file not found: ${jsonPath}. ` +
-      "Ensure server/data/products.json is committed to the repository."
-    );
+  for (const jsonPath of candidates) {
+    try {
+      if (fs.existsSync(jsonPath)) {
+        const parsed: Product[] = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          _seedProducts = parsed.map((p) => ({
+            ...p,
+            version: typeof p.version === "number" ? p.version : 1,
+            lastUpdated: p.lastUpdated || "18 Aug 2026",
+          }));
+          return _seedProducts;
+        }
+      }
+    } catch (_) {
+      // try next candidate
+    }
   }
 
-  const parsed: Product[] = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
-  if (!Array.isArray(parsed) || parsed.length === 0) {
-    throw new Error("products.json is empty or malformed.");
-  }
-
-  _seedProducts = parsed.map((p) => ({
-    ...p,
-    version: typeof p.version === "number" ? p.version : 1,
-    lastUpdated: p.lastUpdated || "18 Aug 2026",
-  }));
-  return _seedProducts;
+  throw new Error(
+    "Seed file not found in candidates: " + candidates.join(", ") +
+    ". Ensure server/data/products.json or api/_lib/products.json is committed."
+  );
 }
 
 // ── Storage operations ────────────────────────────────────────────────────

@@ -1,20 +1,8 @@
 {
   "functions": {
-    "api/integration/health.ts": {
+    "api/**/*.ts": {
       "maxDuration": 30,
-      "includeFiles": "server/data/products.json"
-    },
-    "api/integration/product-update.ts": {
-      "maxDuration": 30,
-      "includeFiles": "server/data/products.json"
-    },
-    "api/products/index.ts": {
-      "maxDuration": 30,
-      "includeFiles": "server/data/products.json"
-    },
-    "api/products/[productId].ts": {
-      "maxDuration": 30,
-      "includeFiles": "server/data/products.json"
+      "includeFiles": "{server/data/products.json,api/_lib/products.json}"
     }
   }
 }

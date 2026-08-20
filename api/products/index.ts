@@ -6,7 +6,7 @@ import {
   setCors,
   sendStorageError,
   getAllProducts,
-} from "../../_lib/redis.js";
+} from "../_lib/redis.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);

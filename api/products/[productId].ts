@@ -7,7 +7,7 @@ import {
   sendStorageError,
   getProductFromRedis,
   getHistory,
-} from "../../_lib/redis.js";
+} from "../_lib/redis.js";
 
 /**
  * GET /api/products/:productId

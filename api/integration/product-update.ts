@@ -10,9 +10,9 @@ import {
   getUpdateLog,
   saveUpdateLog,
   appendHistory,
-} from "../../_lib/redis.js";
-import { resolveSpecKey, isSupplierOnlyField, formatDate } from "../../_lib/resolver.js";
-import type { Product, HistoryEntry } from "../../_lib/types.js";
+} from "../_lib/redis.js";
+import { resolveSpecKey, isSupplierOnlyField, formatDate } from "../_lib/resolver.js";
+import type { Product, HistoryEntry } from "../_lib/types.js";
 
 /**
  * POST /api/integration/product-update
