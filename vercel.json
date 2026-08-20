@@ -1,10 +1,20 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.ts" }
-  ],
   "functions": {
-    "api/index.ts": {
-      "maxDuration": 30
+    "api/integration/health.ts": {
+      "maxDuration": 30,
+      "includeFiles": "server/data/products.json"
+    },
+    "api/integration/product-update.ts": {
+      "maxDuration": 30,
+      "includeFiles": "server/data/products.json"
+    },
+    "api/products/index.ts": {
+      "maxDuration": 30,
+      "includeFiles": "server/data/products.json"
+    },
+    "api/products/[productId].ts": {
+      "maxDuration": 30,
+      "includeFiles": "server/data/products.json"
     }
   }
 }
