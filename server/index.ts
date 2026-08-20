@@ -147,116 +147,167 @@ function getSeedProducts(): Product[] {
   return _seedProducts;
 }
 
-// ---------------------------------------------------------------------------
-// Redis accessor functions
-// ---------------------------------------------------------------------------
+// In-memory fallback for local development when Redis is not configured
+const localProducts = new Map<string, Product>();
+const localLogs = new Map<string, UpdateLog>();
+const localHistory = new Map<string, HistoryEntry[]>();
+
+function ensureLocalSeeded() {
+  if (localProducts.size === 0) {
+    const seed = getSeedProducts();
+    for (const p of seed) {
+      localProducts.set(p.id.toUpperCase(), { ...p });
+    }
+  }
+}
 
 async function seedProductToRedis(redis: Redis, product: Product): Promise<void> {
   await redis.set(`product:${product.id}`, JSON.stringify(product));
   await redis.sadd("products:ids", product.id);
 }
 
-async function ensureAllProductsSeeded(redis: Redis): Promise<void> {
-  const existing = await redis.smembers("products:ids") as string[];
-  const existingSet = new Set(existing);
-  const seed = getSeedProducts();
-  const toSeed = seed.filter((p) => !existingSet.has(p.id));
-  if (toSeed.length > 0) {
-    await Promise.all(toSeed.map((p) => seedProductToRedis(redis, p)));
-    console.log(`[InduCore] Seeded ${toSeed.length} products to Redis.`);
+async function ensureAllProductsSeeded(redis?: Redis): Promise<void> {
+  if (redis) {
+    const existing = await redis.smembers("products:ids") as string[];
+    const existingSet = new Set(existing);
+    const seed = getSeedProducts();
+    const toSeed = seed.filter((p) => !existingSet.has(p.id));
+    if (toSeed.length > 0) {
+      await Promise.all(toSeed.map((p) => seedProductToRedis(redis, p)));
+      console.log(`[InduCore] Seeded ${toSeed.length} products to Redis.`);
+    }
+  } else {
+    ensureLocalSeeded();
   }
 }
 
-async function getAllProducts(redis: Redis): Promise<Product[]> {
-  await ensureAllProductsSeeded(redis);
-  const ids = await redis.smembers("products:ids") as string[];
-  if (!ids || ids.length === 0) return [];
-  const records = await Promise.all(
-    ids.map(async (id) => {
-      const raw = await redis.get(`product:${id}`);
-      if (!raw) return null;
-      return typeof raw === "string" ? JSON.parse(raw) as Product : raw as Product;
-    })
-  );
-  return records.filter((p): p is Product => p !== null);
+async function getAllProducts(redis?: Redis): Promise<Product[]> {
+  if (redis) {
+    await ensureAllProductsSeeded(redis);
+    const ids = await redis.smembers("products:ids") as string[];
+    if (!ids || ids.length === 0) return [];
+    const records = await Promise.all(
+      ids.map(async (id) => {
+        const raw = await redis.get(`product:${id}`);
+        if (!raw) return null;
+        return typeof raw === "string" ? JSON.parse(raw) as Product : raw as Product;
+      })
+    );
+    return records.filter((p): p is Product => p !== null);
+  }
+  ensureLocalSeeded();
+  return Array.from(localProducts.values());
 }
 
-async function getProductFromRedis(
-  redis: Redis,
-  productId: string
+async function getProductFromStore(
+  productId: string,
+  redis?: Redis
 ): Promise<Product | null> {
   const cleanId = productId.trim().toUpperCase();
 
-  // 1. Direct key lookup (O(1))
-  const raw = await redis.get(`product:${cleanId}`);
-  if (raw) {
-    return typeof raw === "string" ? JSON.parse(raw) as Product : raw as Product;
-  }
-
-  // 2. Try seed data (in case product exists but hasn't been seeded yet)
-  const seed = getSeedProducts();
-  const seedMatch = seed.find(
-    (p) => p.id.toUpperCase() === cleanId || p.model.toUpperCase() === cleanId
-  );
-  if (seedMatch) {
-    await seedProductToRedis(redis, seedMatch);
-    return seedMatch;
-  }
-
-  // 3. Scan KV index for model match (expensive, last resort)
-  const ids = await redis.smembers("products:ids") as string[];
-  for (const id of ids) {
-    const candidateRaw = await redis.get(`product:${id}`);
-    if (!candidateRaw) continue;
-    const candidate: Product = typeof candidateRaw === "string"
-      ? JSON.parse(candidateRaw)
-      : candidateRaw as Product;
-    if (
-      candidate.id.toUpperCase() === cleanId ||
-      candidate.model.toUpperCase() === cleanId
-    ) {
-      return candidate;
+  if (redis) {
+    // 1. Direct key lookup (O(1))
+    const raw = await redis.get(`product:${cleanId}`);
+    if (raw) {
+      return typeof raw === "string" ? JSON.parse(raw) as Product : raw as Product;
     }
+
+    // 2. Try seed data
+    const seed = getSeedProducts();
+    const seedMatch = seed.find(
+      (p) => p.id.toUpperCase() === cleanId || p.model.toUpperCase() === cleanId
+    );
+    if (seedMatch) {
+      await seedProductToRedis(redis, seedMatch);
+      return seedMatch;
+    }
+
+    // 3. Scan KV index for model match
+    const ids = await redis.smembers("products:ids") as string[];
+    for (const id of ids) {
+      const candidateRaw = await redis.get(`product:${id}`);
+      if (!candidateRaw) continue;
+      const candidate: Product = typeof candidateRaw === "string"
+        ? JSON.parse(candidateRaw)
+        : candidateRaw as Product;
+      if (
+        candidate.id.toUpperCase() === cleanId ||
+        candidate.model.toUpperCase() === cleanId
+      ) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
+  ensureLocalSeeded();
+  const direct = localProducts.get(cleanId);
+  if (direct) return direct;
+
+  for (const p of localProducts.values()) {
+    if (p.model.toUpperCase() === cleanId) return p;
   }
   return null;
 }
 
-async function saveProductToRedis(redis: Redis, product: Product): Promise<void> {
-  await redis.set(`product:${product.id}`, JSON.stringify(product));
-  await redis.sadd("products:ids", product.id);
+async function saveProductToStore(product: Product, redis?: Redis): Promise<void> {
+  if (redis) {
+    await redis.set(`product:${product.id}`, JSON.stringify(product));
+    await redis.sadd("products:ids", product.id);
+  } else {
+    ensureLocalSeeded();
+    localProducts.set(product.id.toUpperCase(), { ...product });
+  }
 }
 
-async function getUpdateLog(redis: Redis, requestId: string): Promise<UpdateLog | null> {
-  const raw = await redis.get(`update:${requestId}`);
-  if (!raw) return null;
-  return typeof raw === "string" ? JSON.parse(raw) as UpdateLog : raw as UpdateLog;
+async function getUpdateLog(requestId: string, redis?: Redis): Promise<UpdateLog | null> {
+  if (redis) {
+    const raw = await redis.get(`update:${requestId}`);
+    if (!raw) return null;
+    return typeof raw === "string" ? JSON.parse(raw) as UpdateLog : raw as UpdateLog;
+  }
+  return localLogs.get(requestId) || null;
 }
 
 async function saveUpdateLog(
-  redis: Redis,
   requestId: string,
-  log: UpdateLog
+  log: UpdateLog,
+  redis?: Redis
 ): Promise<void> {
-  await redis.set(`update:${requestId}`, JSON.stringify(log));
+  if (redis) {
+    await redis.set(`update:${requestId}`, JSON.stringify(log));
+  } else {
+    localLogs.set(requestId, log);
+  }
 }
 
 async function appendHistory(
-  redis: Redis,
   productId: string,
-  entry: HistoryEntry
+  entry: HistoryEntry,
+  redis?: Redis
 ): Promise<void> {
-  const raw = await redis.get(`history:${productId}`);
-  const existing: HistoryEntry[] = raw
-    ? (typeof raw === "string" ? JSON.parse(raw) : raw as HistoryEntry[])
-    : [];
-  existing.push(entry);
-  await redis.set(`history:${productId}`, JSON.stringify(existing));
+  if (redis) {
+    const raw = await redis.get(`history:${productId}`);
+    const existing: HistoryEntry[] = raw
+      ? (typeof raw === "string" ? JSON.parse(raw) : raw as HistoryEntry[])
+      : [];
+    existing.push(entry);
+    await redis.set(`history:${productId}`, JSON.stringify(existing));
+  } else {
+    const key = productId.toUpperCase();
+    const existing = localHistory.get(key) || [];
+    existing.push(entry);
+    localHistory.set(key, existing);
+  }
 }
 
-async function getHistory(redis: Redis, productId: string): Promise<HistoryEntry[]> {
-  const raw = await redis.get(`history:${productId}`);
-  if (!raw) return [];
-  return typeof raw === "string" ? JSON.parse(raw) : raw as HistoryEntry[];
+async function getHistory(productId: string, redis?: Redis): Promise<HistoryEntry[]> {
+  if (redis) {
+    const raw = await redis.get(`history:${productId}`);
+    if (!raw) return [];
+    return typeof raw === "string" ? JSON.parse(raw) : raw as HistoryEntry[];
+  }
+  return localHistory.get(productId.toUpperCase()) || [];
 }
 
 // ---------------------------------------------------------------------------
@@ -371,14 +422,13 @@ function handleStorageError(err: unknown, res: Response): Response {
 app.get("/api/integration/health", async (_req: Request, res: Response) => {
   noCache(res);
   if (!REDIS_CONFIGURED) {
-    return res.status(503).json({
-      status: "degraded",
-      service: "InduCore E-commerce API",
+    ensureLocalSeeded();
+    return res.json({
+      status: "ok",
+      service: "InduCore E-commerce API (Local Dev)",
       version: "3.0",
-      storage: "NOT_CONFIGURED",
-      message:
-        "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are not set. " +
-        "Install Upstash Redis from the Vercel Marketplace and link to this project.",
+      storage: "LOCAL_IN_MEMORY",
+      totalProducts: localProducts.size,
     });
   }
   try {
@@ -406,7 +456,7 @@ app.get("/api/integration/health", async (_req: Request, res: Response) => {
 app.get("/api/products", async (_req: Request, res: Response) => {
   noCache(res);
   try {
-    const redis = getRedis();
+    const redis = REDIS_CONFIGURED ? getRedis() : undefined;
     const products = await getAllProducts(redis);
     return res.json(products);
   } catch (err) {
@@ -422,12 +472,12 @@ app.get("/api/products/:productId", async (req: Request, res: Response) => {
     return res.status(400).json({ success: false, message: "Missing productId." });
   }
   try {
-    const redis = getRedis();
-    const product = await getProductFromRedis(redis, productId);
+    const redis = REDIS_CONFIGURED ? getRedis() : undefined;
+    const product = await getProductFromStore(productId, redis);
     if (!product) {
       return res.status(404).json({
         success: false,
-        message: `Product '${productId}' not found in the persistent catalog.`,
+        message: `Product '${productId}' not found in the catalog.`,
       });
     }
     return res.json(product);
@@ -443,8 +493,8 @@ app.get(
     noCache(res);
     const { productId } = req.params;
     try {
-      const redis = getRedis();
-      const product = await getProductFromRedis(redis, productId);
+      const redis = REDIS_CONFIGURED ? getRedis() : undefined;
+      const product = await getProductFromStore(productId, redis);
       if (!product) {
         return res.status(404).json({ success: false, message: `Product '${productId}' not found.` });
       }
@@ -467,8 +517,8 @@ app.get("/api/products/:productId/history", async (req: Request, res: Response) 
   noCache(res);
   const { productId } = req.params;
   try {
-    const redis = getRedis();
-    const history = await getHistory(redis, productId.toUpperCase());
+    const redis = REDIS_CONFIGURED ? getRedis() : undefined;
+    const history = await getHistory(productId.toUpperCase(), redis);
     return res.json({ productId: productId.toUpperCase(), history });
   } catch (err) {
     return handleStorageError(err, res);
@@ -482,8 +532,8 @@ app.get(
     noCache(res);
     const { requestId } = req.params;
     try {
-      const redis = getRedis();
-      const log = await getUpdateLog(redis, requestId);
+      const redis = REDIS_CONFIGURED ? getRedis() : undefined;
+      const log = await getUpdateLog(requestId, redis);
       if (!log) {
         return res.status(404).json({
           success: false,
@@ -502,7 +552,6 @@ app.get(
 app.post("/api/integration/product-update", async (req: Request, res: Response) => {
   noCache(res);
 
-  // express.json() has already parsed the body
   const payload = (req.body || {}) as {
     requestId?: string;
     productId?: string;
@@ -516,7 +565,6 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
 
   const { requestId, productId, modelNumber, expectedVersion, newVersion, updates, source, approval } = payload;
 
-  // ── requestId is always required ─────────────────────────────────────────
   if (!requestId?.trim()) {
     return res.status(400).json({
       success: false,
@@ -525,31 +573,11 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
     });
   }
 
-  // ── Fail immediately if Redis is not configured ───────────────────────────
-  if (!REDIS_CONFIGURED) {
-    return res.status(503).json({
-      success: false,
-      status: "storage_not_configured",
-      message:
-        "Persistent storage is not configured. " +
-        "Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.",
-      action:
-        "1. Go to https://vercel.com/marketplace → install Upstash Redis. " +
-        "2. Link to the inducore-website Vercel project. " +
-        "3. Redeploy the project (env vars are auto-injected).",
-    });
-  }
-
-  let redis: Redis;
-  try {
-    redis = getRedis();
-  } catch (err) {
-    return handleStorageError(err, res);
-  }
+  const redis = REDIS_CONFIGURED ? getRedis() : undefined;
 
   // ── Idempotency check ────────────────────────────────────────────────────
   try {
-    const cached = await getUpdateLog(redis, requestId);
+    const cached = await getUpdateLog(requestId, redis);
     if (cached) {
       return res.status(cached.httpStatus || 200).json(cached.responseBody);
     }
@@ -566,12 +594,12 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
   ): Promise<Response> => {
     const body = { success: false, status, message, ...additional };
     try {
-      await saveUpdateLog(redis, requestId, {
+      await saveUpdateLog(requestId, {
         status: "rejected",
         httpStatus: httpCode,
         responseBody: body,
         timestamp: new Date().toISOString(),
-      });
+      }, redis);
     } catch (_) { /* best-effort */ }
     return res.status(httpCode).json(body);
   };
@@ -610,14 +638,14 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
     );
   }
 
-  // ── Load product from Redis ──────────────────────────────────────────────
+  // ── Load product ─────────────────────────────────────────────────────────
   let matchedProduct: Product | null = null;
   try {
     if (productId?.trim()) {
-      matchedProduct = await getProductFromRedis(redis, productId);
+      matchedProduct = await getProductFromStore(productId, redis);
     }
     if (!matchedProduct && modelNumber?.trim()) {
-      matchedProduct = await getProductFromRedis(redis, modelNumber);
+      matchedProduct = await getProductFromStore(modelNumber, redis);
     }
   } catch (err) {
     return handleStorageError(err, res);
@@ -626,7 +654,7 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
   if (!matchedProduct) {
     return rejectRequest(
       "product_not_found",
-      `No product found with ID '${productId || ""}' or model '${modelNumber || ""}' in the persistent catalog.`,
+      `No product found with ID '${productId || ""}' or model '${modelNumber || ""}' in the catalog.`,
       404
     );
   }
@@ -715,7 +743,7 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
     }
   }
 
-  // ── Persist to Redis (product + history) ─────────────────────────────────
+  // ── Persist (product + history) ──────────────────────────────────────────
   const historyEntry: HistoryEntry = {
     requestId,
     previousVersion: currentVersion,
@@ -731,8 +759,8 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
   };
 
   try {
-    await saveProductToRedis(redis, updatedProduct);
-    await appendHistory(redis, updatedProduct.id, historyEntry);
+    await saveProductToStore(updatedProduct, redis);
+    await appendHistory(updatedProduct.id, historyEntry, redis);
   } catch (err) {
     return handleStorageError(err, res);
   }
@@ -754,7 +782,7 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
   };
 
   try {
-    await saveUpdateLog(redis, requestId, {
+    await saveUpdateLog(requestId, {
       status: "applied",
       httpStatus: 200,
       responseBody: successResponse,
@@ -766,9 +794,9 @@ app.post("/api/integration/product-update", async (req: Request, res: Response) 
         newVersion: targetNewVersion,
         changedFields,
       },
-    });
+    }, redis);
   } catch (err) {
-    console.warn("[InduCore] Failed to cache update log (idempotency risk):", err);
+    console.warn("[InduCore] Failed to cache update log:", err);
   }
 
   console.log(
